@@ -22,6 +22,12 @@
 | 2. **빈 템플릿** | [`template/lean-canvas.md`](template/lean-canvas.md) | 자기 사업을 투영하는 워크북 + 블록별 자문 질문 |
 | 3. **의사결정 원칙** | [`docs/principles/`](docs/principles/) | 추출한 재사용 규율 (시급 방어선·플랫폼 집중도·부의 사다리) |
 
+### 저자 린캔버스 — 한 장 요약
+
+![지지플랩 린캔버스 — 공개판 (절대 금액 영역 모자이크)](examples/my-canvas.png)
+
+> 비용 구조·Profit First 분배·자산 로드맵 절대값 영역은 모자이크 처리됐습니다. 비중·전략·원칙·슬로건은 그대로입니다. 텍스트 상세: [`examples/my-canvas.md`](examples/my-canvas.md)
+
 ---
 
 ## 시작하기
