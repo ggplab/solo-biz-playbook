@@ -168,6 +168,40 @@ base: Ash Maurya, Running Lean (O'Reilly)
 
 ---
 
+## 시각화 (선택) — 한 장짜리로 만들기
+
+텍스트 v1이 확정되면 **한 장 이미지**로 변환하세요. 매주 훑어보며 전략 드리프트를 감지하는 데 유용합니다.
+
+### Claude Code `diagram-design` 스킬 사용 예시
+
+Claude Code 세션에서:
+
+```
+/diagram-design
+
+내 린캔버스를 9블록 그리드로 시각화해줘.
+레이아웃: 상단 5개(Problem/Solution/UVP/Unfair/Segments), 하단 4개(Metrics/Channels/Cost/Revenue)
+색상: 파스텔 뉴트럴, 제목은 굵은 serif, 본문은 sans
+내용은 내가 넣은 `template/lean-canvas.md` 그대로 사용
+```
+
+→ 인라인 SVG HTML 파일 한 장 출력. 텍스트로 편집 가능, 브라우저에서 PNG 내보내기 쉬움.
+
+### 대안 도구
+- **Notion** — 텍스트 SSOT + 분기 말 PNG 내보내기 조합 (저자의 실제 운영 방식)
+- **Excalidraw** — 손그림 톤, 공유 링크 바로 생성
+- **Figma** — 협업 피드백 많이 받을 때
+- **[leanstack.com](https://leanstack.com/lean-canvas)** — 공식 Ash Maurya 양식
+
+### 민감정보 주의
+
+이미지로 만들 때도 텍스트와 동일한 마스킹 원칙 적용:
+- 생활비·매출 절대값 → 범위/배수
+- 고객사 실명 → 유형 분류
+- **비중·전략·원칙·이론 레퍼런스는 유지**
+
+---
+
 ## 참고 원칙
 
 - [`01-pricing-floor.md`](../docs/principles/01-pricing-floor.md) — 실투입 시급 방어선
