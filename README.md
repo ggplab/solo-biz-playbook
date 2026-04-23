@@ -71,7 +71,7 @@ Claude Code에서:
 - Threads: [@belle_epoque7](https://threads.net/@belle_epoque7)
 - LinkedIn: [jayjunglim](https://linkedin.com/in/jayjunglim)
 - Homepage: [ggplab.xyz](https://ggplab.xyz)
-- 저서: 『n8n이 다해줌』(한빛미디어, 2026 출간 예정)
+- 저서: 『n8n이 다해줌』(한빛미디어)
 
 ---
 
