@@ -1,8 +1,6 @@
 # Claude Worklog — 세션이 끝나면 자동으로 캘린더·업무일지에 꽂히는 시스템
 
-> Claude Code / Codex 세션을 끝낼 때마다 **Google 캘린더에 "내가 한 작업" 이벤트가 자동으로 생기고**, 같은 내용이 Obsidian 업무일지에도 기록되는 개인 계측(self-telemetry) 시스템입니다. Stop hook 하나로 돌아갑니다.
-
-![데이터 흐름](#데이터-흐름)
+> Claude Code / Codex 세션을 끝낼 때마다 **Google 캘린더에 "내가 한 작업" 이벤트가 자동으로 생기고**, 같은 내용이 Obsidian 업무일지에도 기록되는 개인 계측(self-telemetry) 시스템입니다. Stop hook 하나로 돌아갑니다. 전체 흐름은 아래 [데이터 흐름](#데이터-흐름) 섹션 참조.
 
 ---
 
@@ -45,31 +43,13 @@ python3 scripts/worklog_calendar.py --retitle --backfill 7
 
 ## 데이터 흐름
 
-```
-┌──────────────────────────────┐
-│ Claude Code / Codex 세션     │
-│ ~/.claude/projects/**/*.jsonl │
-│ ~/.codex/sessions/**/*.jsonl  │
-└──────────────┬───────────────┘
-               │ Stop hook 발화
-               ▼
-┌──────────────────────────────┐
-│ session_metrics.py           │  ← 시간·메시지·툴·토큰·git 변경량 파싱
-└──────┬───────────────┬────────┘
-       │               │
-       ▼               ▼
-┌────────────────┐  ┌────────────────┐
-│ worklog_       │  │ write_         │
-│ calendar.py    │  │ worklog.py     │
-│                │  │                │
-│ gws CLI로      │  │ Obsidian       │
-│ Calendar       │  │ 업무일지 MD    │
-│ upsert/merge   │  │ AUTO 섹션 갱신 │
-└────────────────┘  └────────────────┘
-       │                  │
-       ▼                  ▼
-  Google Calendar     Obsidian Vault
-  Worklog(auto)       업무일지/YYYY-MM-DD.md
+```mermaid
+flowchart TD
+    A["Claude Code / Codex 세션<br/>~/.claude/projects/**/*.jsonl<br/>~/.codex/sessions/**/*.jsonl"] -->|Stop hook 발화| B["<b>session_metrics.py</b><br/>시간·메시지·툴·토큰·git 변경량 파싱"]
+    B --> C["<b>worklog_calendar.py</b><br/>gws CLI로 Calendar upsert/merge"]
+    B --> D["<b>write_worklog.py</b><br/>Obsidian 업무일지 AUTO 섹션 갱신"]
+    C --> E["Google Calendar<br/>Worklog(auto)"]
+    D --> F["Obsidian Vault<br/>업무일지/YYYY-MM-DD.md"]
 ```
 
 ---
