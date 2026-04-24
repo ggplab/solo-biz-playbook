@@ -1,0 +1,25 @@
+{
+  "_comment": "이 JSON은 ~/.claude/settings.json 의 hooks 섹션에 병합할 예시입니다. 전체 파일을 이 내용으로 덮어쓰지 마세요.",
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "zsh -c 'source ~/.zshenv 2>/dev/null; PAYLOAD=$(cat); SID=$(printf %s \"$PAYLOAD\" | jq -r \".session_id // empty\"); [ -n \"$SID\" ] && python3 $HOME/Projects/solo-biz-playbook/automation/claude-worklog/scripts/worklog_calendar.py --session-id \"$SID\" >> /tmp/worklog-calendar.log 2>&1 || true'",
+            "timeout": 30,
+            "statusMessage": "Worklog 캘린더 동기화 중...",
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "zsh -c 'source ~/.zshenv 2>/dev/null; cat > /dev/null; python3 $HOME/Projects/solo-biz-playbook/automation/claude-worklog/scripts/write_worklog.py >> /tmp/write-worklog.log 2>&1 || true'",
+            "timeout": 60,
+            "statusMessage": "업무일지 갱신 중...",
+            "async": true
+          }
+        ]
+      }
+    ]
+  }
+}

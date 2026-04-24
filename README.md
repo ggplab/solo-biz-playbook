@@ -70,6 +70,14 @@ Claude Code에서:
 
 ---
 
+## 운영 인프라 (부록)
+
+원칙은 **실측 데이터**가 있어야 방어됩니다. "시급 N원 밑으로 안 받는다"를 선언이 아니라 숫자로 말하려면, 프로젝트별 누적 시간을 자동으로 찍어주는 계측이 필요합니다.
+
+- [`automation/claude-worklog/`](automation/claude-worklog/) — Claude Code / Codex 세션이 끝날 때마다 Google 캘린더·Obsidian 업무일지에 자동 기록되는 Stop hook 시스템. 분기 회고 때 프로젝트별 누적 시간을 필터링해서 뽑아 [원칙 01(시급 방어선)](docs/principles/01-pricing-floor.md)의 실측 근거로 씁니다.
+
+---
+
 ## 누가 만들었나
 
 **임정 / 지지플랩(GGPLab)** — AI × 데이터 × 교육 교차점에서 1인 사업 운영 중. 기업 강의 30회+, 멘토링 400명+ 누적.
