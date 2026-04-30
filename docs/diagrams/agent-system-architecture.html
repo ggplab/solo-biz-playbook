@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent-Neutral System Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #faf7f2;
+      --paper-2: #f2ede4;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --soft: #78716c;
+      --rule: rgba(28,25,23,0.12);
+      --accent: #b5523a;
+      --accent-tint: rgba(181,82,58,0.08);
+      --link: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Geist", sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px 32px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--soft);
+      font: 500 12px/1 "Geist Mono", monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font: 400 40px/1.05 "Instrument Serif", serif;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 12px 0 28px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .diagram-shell {
+      overflow-x: auto;
+      background: var(--paper-2);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    svg {
+      display: block;
+      min-width: 1000px;
+      height: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 0.95fr 1.1fr 0.95fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .dot.accent { background: var(--accent); }
+    .dot.link { background: var(--link); }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      color: var(--soft);
+      font: 400 12px/1.4 "Geist Mono", monospace;
+    }
+
+    .node-name {
+      font-family: "Geist", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      fill: var(--ink);
+      text-anchor: middle;
+    }
+
+    .node-sub {
+      font-family: "Geist Mono", monospace;
+      font-size: 9px;
+      fill: var(--muted);
+      text-anchor: middle;
+    }
+
+    .tag {
+      font-family: "Geist Mono", monospace;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-anchor: middle;
+      text-transform: uppercase;
+    }
+
+    .arrow-label {
+      font-family: "Geist Mono", monospace;
+      font-size: 8px;
+      fill: var(--soft);
+      letter-spacing: 0.06em;
+      text-anchor: middle;
+    }
+
+    .callout {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 16px;
+      fill: #57534e;
+    }
+
+    @media (max-width: 760px) {
+      main { padding: 32px 16px 24px; }
+      h1 { font-size: 32px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">MODEL-NEUTRAL OPERATIONS</p>
+  <h1>Agent-Neutral System Architecture</h1>
+  <p class="subtitle">업무 지식을 특정 모델의 프롬프트 파일에 가두지 않고, 공용 문서와 실행 가능한 스크립트에 두는 구조입니다.</p>
+
+  <div class="diagram-shell">
+    <svg viewBox="0 0 1000 560" role="img" aria-labelledby="title desc">
+      <title id="title">Agent-neutral system architecture</title>
+      <desc id="desc">Shared guide and utilities feed thin adapters for different agents.</desc>
+      <defs>
+        <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="0.9" fill="rgba(28,25,23,0.10)"/>
+        </pattern>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#57534e"/>
+        </marker>
+        <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#b5523a"/>
+        </marker>
+        <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#2563eb"/>
+        </marker>
+      </defs>
+
+      <rect width="1000" height="560" fill="#f2ede4"/>
+      <rect width="1000" height="560" fill="url(#dots)" opacity="0.55"/>
+
+      <!-- Boundary -->
+      <rect x="300" y="52" width="400" height="384" rx="8" fill="rgba(181,82,58,0.05)" stroke="rgba(181,82,58,0.50)" stroke-dasharray="4,4"/>
+      <rect x="416" y="44" width="168" height="20" rx="2" fill="#f2ede4"/>
+      <text x="500" y="58" fill="#b5523a" font-family="'Geist Mono', monospace" font-size="8" letter-spacing="0.14em" text-anchor="middle">SHARED WORKSPACE SSOT</text>
+
+      <!-- Arrows from SSOT -->
+      <path d="M500 160 V208" stroke="#b5523a" stroke-width="1.2" fill="none" marker-end="url(#arrow-accent)"/>
+      <rect x="472" y="180" width="56" height="16" rx="2" fill="#f2ede4"/>
+      <text x="500" y="192" class="arrow-label">INDEX</text>
+
+      <path d="M500 312 V360" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="468" y="332" width="64" height="16" rx="2" fill="#f2ede4"/>
+      <text x="500" y="344" class="arrow-label">EXECUTE</text>
+
+      <path d="M300 132 H188" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="224" y="116" width="44" height="16" rx="2" fill="#f2ede4"/>
+      <text x="246" y="128" class="arrow-label">READ</text>
+
+      <path d="M300 264 H188" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="224" y="248" width="44" height="16" rx="2" fill="#f2ede4"/>
+      <text x="246" y="260" class="arrow-label">READ</text>
+
+      <path d="M700 132 H812" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="736" y="116" width="44" height="16" rx="2" fill="#f2ede4"/>
+      <text x="758" y="128" class="arrow-label">READ</text>
+
+      <path d="M700 264 H812" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="736" y="248" width="44" height="16" rx="2" fill="#f2ede4"/>
+      <text x="758" y="260" class="arrow-label">READ</text>
+
+      <path d="M500 436 V484" stroke="#2563eb" stroke-width="1.2" fill="none" marker-end="url(#arrow-link)"/>
+      <rect x="472" y="456" width="56" height="16" rx="2" fill="#f2ede4"/>
+      <text x="500" y="468" class="arrow-label">OUTPUT</text>
+
+      <!-- Shared nodes -->
+      <g>
+        <rect x="396" y="88" width="208" height="72" rx="6" fill="#f2ede4"/>
+        <rect x="396" y="88" width="208" height="72" rx="6" fill="rgba(181,82,58,0.08)" stroke="#b5523a" stroke-width="1.2"/>
+        <rect x="408" y="100" width="44" height="16" rx="2" fill="transparent" stroke="rgba(181,82,58,0.45)" stroke-width="0.8"/>
+        <text x="430" y="112" class="tag" fill="#b5523a">GUIDE</text>
+        <text x="500" y="124" class="node-name">AGENT_GUIDE.md</text>
+        <text x="500" y="140" class="node-sub">rules + paths + policies</text>
+      </g>
+
+      <g>
+        <rect x="396" y="208" width="208" height="104" rx="6" fill="#f2ede4"/>
+        <rect x="396" y="208" width="208" height="104" rx="6" fill="rgba(181,82,58,0.08)" stroke="#b5523a" stroke-width="1.2"/>
+        <rect x="408" y="220" width="44" height="16" rx="2" fill="transparent" stroke="rgba(181,82,58,0.45)" stroke-width="0.8"/>
+        <text x="430" y="232" class="tag" fill="#b5523a">INDEX</text>
+        <text x="500" y="256" class="node-name">UTILITIES.md</text>
+        <text x="500" y="272" class="node-sub">scripts + templates + adapters</text>
+      </g>
+
+      <g>
+        <rect x="396" y="360" width="208" height="76" rx="6" fill="#f2ede4"/>
+        <rect x="396" y="360" width="208" height="76" rx="6" fill="#fff" stroke="#1c1917"/>
+        <rect x="408" y="372" width="44" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.40)" stroke-width="0.8"/>
+        <text x="430" y="384" class="tag" fill="#57534e">ENGINE</text>
+        <text x="500" y="400" class="node-name">shared/scripts</text>
+        <text x="500" y="416" class="node-sub">testable execution logic</text>
+      </g>
+
+      <!-- Adapter nodes -->
+      <g>
+        <rect x="48" y="88" width="140" height="88" rx="6" fill="#f2ede4"/>
+        <rect x="48" y="88" width="140" height="88" rx="6" fill="rgba(28,25,23,0.03)" stroke="rgba(28,25,23,0.30)"/>
+        <rect x="60" y="100" width="48" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.35)" stroke-width="0.8"/>
+        <text x="84" y="112" class="tag" fill="#57534e">CLAUDE</text>
+        <text x="118" y="132" class="node-name">CLAUDE.md</text>
+        <text x="118" y="148" class="node-sub">thin adapter</text>
+      </g>
+
+      <g>
+        <rect x="48" y="220" width="140" height="88" rx="6" fill="#f2ede4"/>
+        <rect x="48" y="220" width="140" height="88" rx="6" fill="rgba(28,25,23,0.03)" stroke="rgba(28,25,23,0.30)"/>
+        <rect x="60" y="232" width="44" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.35)" stroke-width="0.8"/>
+        <text x="82" y="244" class="tag" fill="#57534e">CODEX</text>
+        <text x="118" y="264" class="node-name">AGENTS.md</text>
+        <text x="118" y="280" class="node-sub">thin adapter</text>
+      </g>
+
+      <g>
+        <rect x="812" y="88" width="140" height="88" rx="6" fill="#f2ede4"/>
+        <rect x="812" y="88" width="140" height="88" rx="6" fill="rgba(28,25,23,0.03)" stroke="rgba(28,25,23,0.30)"/>
+        <rect x="824" y="100" width="48" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.35)" stroke-width="0.8"/>
+        <text x="848" y="112" class="tag" fill="#57534e">OTHER</text>
+        <text x="882" y="132" class="node-name">Gemini CLI</text>
+        <text x="882" y="148" class="node-sub">adapter option</text>
+      </g>
+
+      <g>
+        <rect x="812" y="220" width="140" height="88" rx="6" fill="#f2ede4"/>
+        <rect x="812" y="220" width="140" height="88" rx="6" fill="rgba(28,25,23,0.03)" stroke="rgba(28,25,23,0.30)"/>
+        <rect x="824" y="232" width="48" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.35)" stroke-width="0.8"/>
+        <text x="848" y="244" class="tag" fill="#57534e">TEAM</text>
+        <text x="882" y="264" class="node-name">Internal Agent</text>
+        <text x="882" y="280" class="node-sub">adapter option</text>
+      </g>
+
+      <!-- Output node -->
+      <g>
+        <rect x="376" y="484" width="248" height="52" rx="6" fill="#f2ede4"/>
+        <rect x="376" y="484" width="248" height="52" rx="6" fill="rgba(37,99,235,0.06)" stroke="#2563eb"/>
+        <text x="500" y="508" class="node-name">Same work, different agent</text>
+        <text x="500" y="524" class="node-sub">no duplicated workflow logic</text>
+      </g>
+
+      <text x="760" y="392" class="callout">Model-specific files point inward.</text>
+      <path d="M748 380 C700 348, 660 332, 604 312" stroke="#78716c" stroke-width="1" fill="none" stroke-dasharray="4,3"/>
+
+      <!-- Legend -->
+      <line x1="40" y1="452" x2="960" y2="452" stroke="rgba(28,25,23,0.12)" stroke-width="0.8"/>
+      <text x="48" y="472" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8" letter-spacing="0.14em">LEGEND</text>
+      <rect x="140" y="460" width="20" height="12" rx="2" fill="rgba(181,82,58,0.08)" stroke="#b5523a"/>
+      <text x="168" y="470" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">shared SSOT</text>
+      <rect x="308" y="460" width="20" height="12" rx="2" fill="rgba(28,25,23,0.03)" stroke="rgba(28,25,23,0.30)"/>
+      <text x="336" y="470" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">thin adapter</text>
+      <rect x="484" y="460" width="20" height="12" rx="2" fill="#fff" stroke="#1c1917"/>
+      <text x="512" y="470" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">executable logic</text>
+    </svg>
+  </div>
+
+  <section class="cards">
+    <article class="card">
+      <h2><span class="dot accent"></span>SSOT first</h2>
+      <p>환경 지도와 유틸리티 레지스트리를 공용 문서로 두면 모델별 프롬프트 파일 사이의 드리프트를 줄입니다.</p>
+    </article>
+    <article class="card">
+      <h2><span class="dot"></span>Adapters stay thin</h2>
+      <p>Claude, Codex, Gemini용 파일은 “무엇을 읽고 무엇을 호출할지”만 담습니다. 업무 로직은 넣지 않습니다.</p>
+    </article>
+    <article class="card">
+      <h2><span class="dot link"></span>Portable automation</h2>
+      <p>실행 로직이 스크립트에 있으면 새 에이전트를 붙일 때 포인터만 추가하면 됩니다.</p>
+    </article>
+  </section>
+
+  <footer>solo-biz-playbook / docs/diagrams/agent-system-architecture.html</footer>
+</main>
+</body>
+</html>

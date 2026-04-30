@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Worklog Automation Architecture</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #faf7f2;
+      --paper-2: #f2ede4;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --soft: #78716c;
+      --rule: rgba(28,25,23,0.12);
+      --rule-solid: rgba(120,113,108,0.25);
+      --accent: #b5523a;
+      --accent-tint: rgba(181,82,58,0.08);
+      --link: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Geist", sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px 32px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--soft);
+      font: 500 12px/1 "Geist Mono", monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font: 400 40px/1.05 "Instrument Serif", serif;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 12px 0 28px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .diagram-shell {
+      overflow-x: auto;
+      background: var(--paper-2);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    svg {
+      display: block;
+      min-width: 1000px;
+      height: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr 0.9fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .dot.accent { background: var(--accent); }
+    .dot.link { background: var(--link); }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      color: var(--soft);
+      font: 400 12px/1.4 "Geist Mono", monospace;
+    }
+
+    .node-name {
+      font-family: "Geist", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      fill: var(--ink);
+      text-anchor: middle;
+    }
+
+    .node-sub {
+      font-family: "Geist Mono", monospace;
+      font-size: 9px;
+      fill: var(--muted);
+      text-anchor: middle;
+    }
+
+    .tag {
+      font-family: "Geist Mono", monospace;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-anchor: middle;
+      text-transform: uppercase;
+    }
+
+    .arrow-label {
+      font-family: "Geist Mono", monospace;
+      font-size: 8px;
+      fill: var(--soft);
+      letter-spacing: 0.06em;
+      text-anchor: middle;
+    }
+
+    @media (max-width: 760px) {
+      main { padding: 32px 16px 24px; }
+      h1 { font-size: 32px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">OPERATING TELEMETRY</p>
+  <h1>Worklog Automation Architecture</h1>
+  <p class="subtitle">AI 에이전트 세션을 “내가 어디에 시간을 썼는가”라는 사업 운영 데이터로 바꾸는 경량 파이프라인입니다.</p>
+
+  <div class="diagram-shell">
+    <svg viewBox="0 0 1000 540" role="img" aria-labelledby="title desc">
+      <title id="title">Worklog automation architecture</title>
+      <desc id="desc">Agent sessions flow into metrics parsing, then calendar and daily log outputs.</desc>
+      <defs>
+        <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="0.9" fill="rgba(28,25,23,0.10)"/>
+        </pattern>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#57534e"/>
+        </marker>
+        <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#b5523a"/>
+        </marker>
+        <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#2563eb"/>
+        </marker>
+      </defs>
+
+      <rect width="1000" height="540" fill="#f2ede4"/>
+      <rect width="1000" height="540" fill="url(#dots)" opacity="0.55"/>
+
+      <!-- Arrows -->
+      <path d="M188 132 H276" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="216" y="116" width="40" height="16" rx="2" fill="#f2ede4"/>
+      <text x="236" y="128" class="arrow-label">WRITE</text>
+
+      <path d="M444 132 H532" stroke="#b5523a" stroke-width="1.2" fill="none" marker-end="url(#arrow-accent)"/>
+      <rect x="468" y="116" width="48" height="16" rx="2" fill="#f2ede4"/>
+      <text x="492" y="128" class="arrow-label">PARSE</text>
+
+      <path d="M692 132 H780" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="716" y="116" width="48" height="16" rx="2" fill="#f2ede4"/>
+      <text x="740" y="128" class="arrow-label">RULES</text>
+
+      <path d="M860 184 V244" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="836" y="208" width="48" height="16" rx="2" fill="#f2ede4"/>
+      <text x="860" y="220" class="arrow-label">FORK</text>
+
+      <path d="M820 304 H676" stroke="#2563eb" stroke-width="1.2" fill="none" marker-end="url(#arrow-link)"/>
+      <rect x="724" y="288" width="56" height="16" rx="2" fill="#f2ede4"/>
+      <text x="752" y="300" class="arrow-label">UPSERT</text>
+
+      <path d="M900 304 H900 V380 H676" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="872" y="336" width="56" height="16" rx="2" fill="#f2ede4"/>
+      <text x="900" y="348" class="arrow-label">RENDER</text>
+
+      <path d="M560 360 V420 H236" stroke="#57534e" stroke-width="1" fill="none" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+      <rect x="360" y="404" width="80" height="16" rx="2" fill="#f2ede4"/>
+      <text x="400" y="416" class="arrow-label">REVIEW LOOP</text>
+
+      <!-- Nodes -->
+      <g>
+        <rect x="48" y="80" width="140" height="104" rx="6" fill="#f2ede4"/>
+        <rect x="48" y="80" width="140" height="104" rx="6" fill="rgba(87,83,78,0.10)" stroke="#78716c"/>
+        <rect x="60" y="92" width="40" height="16" rx="2" fill="transparent" stroke="rgba(120,113,108,0.45)" stroke-width="0.8"/>
+        <text x="80" y="104" class="tag" fill="#57534e">INPUT</text>
+        <text x="118" y="132" class="node-name">Agent Session</text>
+        <text x="118" y="148" class="node-sub">Claude / Codex</text>
+      </g>
+
+      <g>
+        <rect x="276" y="80" width="168" height="104" rx="6" fill="#f2ede4"/>
+        <rect x="276" y="80" width="168" height="104" rx="6" fill="rgba(28,25,23,0.03)" stroke="rgba(28,25,23,0.30)"/>
+        <rect x="288" y="92" width="36" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.35)" stroke-width="0.8"/>
+        <text x="306" y="104" class="tag" fill="#57534e">LOG</text>
+        <text x="360" y="132" class="node-name">Session JSONL</text>
+        <text x="360" y="148" class="node-sub">tool calls + timing</text>
+      </g>
+
+      <g>
+        <rect x="532" y="80" width="160" height="104" rx="6" fill="#f2ede4"/>
+        <rect x="532" y="80" width="160" height="104" rx="6" fill="rgba(181,82,58,0.08)" stroke="#b5523a" stroke-width="1.2"/>
+        <rect x="544" y="92" width="48" height="16" rx="2" fill="transparent" stroke="rgba(181,82,58,0.45)" stroke-width="0.8"/>
+        <text x="568" y="104" class="tag" fill="#b5523a">ENGINE</text>
+        <text x="612" y="132" class="node-name">session_metrics.py</text>
+        <text x="612" y="148" class="node-sub">duration + tools + git</text>
+      </g>
+
+      <g>
+        <rect x="780" y="80" width="160" height="104" rx="6" fill="#f2ede4"/>
+        <rect x="780" y="80" width="160" height="104" rx="6" fill="#fff" stroke="#1c1917"/>
+        <rect x="792" y="92" width="44" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.40)" stroke-width="0.8"/>
+        <text x="814" y="104" class="tag" fill="#57534e">FILTER</text>
+        <text x="860" y="132" class="node-name">Quality Gate</text>
+        <text x="860" y="148" class="node-sub">skip + merge rules</text>
+      </g>
+
+      <g>
+        <rect x="820" y="252" width="160" height="104" rx="6" fill="#f2ede4"/>
+        <rect x="820" y="252" width="160" height="104" rx="6" fill="#fff" stroke="#1c1917"/>
+        <rect x="832" y="264" width="44" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.40)" stroke-width="0.8"/>
+        <text x="854" y="276" class="tag" fill="#57534e">ROUTE</text>
+        <text x="900" y="304" class="node-name">Output Scripts</text>
+        <text x="900" y="320" class="node-sub">calendar + journal</text>
+      </g>
+
+      <g>
+        <rect x="516" y="252" width="160" height="104" rx="6" fill="#f2ede4"/>
+        <rect x="516" y="252" width="160" height="104" rx="6" fill="rgba(37,99,235,0.06)" stroke="#2563eb"/>
+        <rect x="528" y="264" width="36" height="16" rx="2" fill="transparent" stroke="rgba(37,99,235,0.45)" stroke-width="0.8"/>
+        <text x="546" y="276" class="tag" fill="#2563eb">GCal</text>
+        <text x="596" y="304" class="node-name">Worklog Calendar</text>
+        <text x="596" y="320" class="node-sub">idempotent upsert</text>
+      </g>
+
+      <g>
+        <rect x="516" y="372" width="160" height="104" rx="6" fill="#f2ede4"/>
+        <rect x="516" y="372" width="160" height="104" rx="6" fill="rgba(28,25,23,0.05)" stroke="#57534e"/>
+        <rect x="528" y="384" width="36" height="16" rx="2" fill="transparent" stroke="rgba(87,83,78,0.45)" stroke-width="0.8"/>
+        <text x="546" y="396" class="tag" fill="#57534e">NOTE</text>
+        <text x="596" y="424" class="node-name">Daily Worklog</text>
+        <text x="596" y="440" class="node-sub">manual notes preserved</text>
+      </g>
+
+      <g>
+        <rect x="56" y="372" width="180" height="96" rx="6" fill="#f2ede4"/>
+        <rect x="56" y="372" width="180" height="96" rx="6" fill="rgba(28,25,23,0.02)" stroke="rgba(28,25,23,0.20)" stroke-dasharray="4,3"/>
+        <rect x="68" y="384" width="44" height="16" rx="2" fill="transparent" stroke="rgba(87,83,78,0.35)" stroke-width="0.8"/>
+        <text x="90" y="396" class="tag" fill="#78716c">OWNER</text>
+        <text x="146" y="416" class="node-name">Quarterly Review</text>
+        <text x="146" y="432" class="node-sub">pricing floor evidence</text>
+      </g>
+
+      <!-- Legend -->
+      <line x1="40" y1="500" x2="960" y2="500" stroke="rgba(28,25,23,0.12)" stroke-width="0.8"/>
+      <text x="48" y="524" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8" letter-spacing="0.14em">LEGEND</text>
+      <rect x="140" y="512" width="20" height="12" rx="2" fill="rgba(181,82,58,0.08)" stroke="#b5523a"/>
+      <text x="168" y="522" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">shared engine</text>
+      <rect x="308" y="512" width="20" height="12" rx="2" fill="rgba(37,99,235,0.06)" stroke="#2563eb"/>
+      <text x="336" y="522" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">external output</text>
+      <rect x="496" y="512" width="20" height="12" rx="2" fill="rgba(28,25,23,0.02)" stroke="rgba(28,25,23,0.20)" stroke-dasharray="4,3"/>
+      <text x="524" y="522" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">review loop</text>
+    </svg>
+  </div>
+
+  <section class="cards">
+    <article class="card">
+      <h2><span class="dot accent"></span>One parser</h2>
+      <p>`session_metrics.py`가 캘린더와 업무일지의 공통 데이터 소스입니다. 출력이 늘어나도 지표 정의는 한 곳에 남습니다.</p>
+    </article>
+    <article class="card">
+      <h2><span class="dot link"></span>Two outputs</h2>
+      <p>캘린더는 시간 증거, 업무일지는 맥락 기록입니다. 둘을 분리하면 회고와 정산에 각각 맞게 쓸 수 있습니다.</p>
+    </article>
+    <article class="card">
+      <h2><span class="dot"></span>Business use</h2>
+      <p>분기 단위로 프로젝트별 투입 시간을 뽑아 가격, 유지 여부, 자동화 우선순위를 판단합니다.</p>
+    </article>
+  </section>
+
+  <footer>solo-biz-playbook / docs/diagrams/worklog-architecture.html</footer>
+</main>
+</body>
+</html>
