@@ -45,8 +45,10 @@
 
 원칙은 실측 데이터가 있어야 방어됩니다. "시급 N원 밑으로 안 받는다"를 선언이 아니라 숫자로 말하려면, 프로젝트별 누적 시간을 자동으로 찍어주는 계측이 필요합니다.
 
+![운영 계측 구조도](docs/diagrams/worklog-architecture.png)
+
 - [`automation/claude-worklog/`](automation/claude-worklog/) — Claude Code / Codex 세션이 끝날 때마다 Google 캘린더·Obsidian 업무일지에 자동 기록되는 Stop hook 시스템
-- [운영 계측 구조도](docs/diagrams/worklog-architecture.html) — 세션 로그가 지표, 캘린더, 업무일지로 변환되는 흐름
+- [운영 계측 구조도 HTML](docs/diagrams/worklog-architecture.html) — 세션 로그가 지표, 캘린더, 업무일지로 변환되는 흐름
 - 분기 회고 때 프로젝트별 누적 시간을 필터링해서 [원칙 01(시급 방어선)](docs/principles/01-pricing-floor.md)의 실측 근거로 씁니다.
 
 ---
@@ -55,10 +57,12 @@
 
 AI 도구는 계속 바뀝니다. 업무 시스템을 특정 모델의 프롬프트 파일에만 넣으면, 모델이나 CLI를 바꿀 때마다 같은 자동화를 다시 만들어야 합니다.
 
+![에이전트 운영 구조도](docs/diagrams/agent-system-architecture.png)
+
 - [`docs/agent-systems/`](docs/agent-systems/) — 모델 비종속 에이전트 운영 문서 묶음
 - [`docs/agent-systems/agent-guide.md`](docs/agent-systems/agent-guide.md) — 공용 SSOT 문서와 얇은 에이전트별 어댑터 구조
 - [`docs/agent-systems/utilities-registry.md`](docs/agent-systems/utilities-registry.md) — 재사용 스크립트·템플릿·스킬 레지스트리 템플릿
-- [에이전트 운영 구조도](docs/diagrams/agent-system-architecture.html) — 공용 문서·스크립트와 모델별 어댑터의 관계
+- [에이전트 운영 구조도 HTML](docs/diagrams/agent-system-architecture.html) — 공용 문서·스크립트와 모델별 어댑터의 관계
 
 ---
 
