@@ -75,6 +75,9 @@ Claude Code에서:
 원칙은 **실측 데이터**가 있어야 방어됩니다. "시급 N원 밑으로 안 받는다"를 선언이 아니라 숫자로 말하려면, 프로젝트별 누적 시간을 자동으로 찍어주는 계측이 필요합니다.
 
 - [`automation/claude-worklog/`](automation/claude-worklog/) — Claude Code / Codex 세션이 끝날 때마다 Google 캘린더·Obsidian 업무일지에 자동 기록되는 Stop hook 시스템. 분기 회고 때 프로젝트별 누적 시간을 필터링해서 뽑아 [원칙 01(시급 방어선)](docs/principles/01-pricing-floor.md)의 실측 근거로 씁니다.
+- [`docs/agent-systems/`](docs/agent-systems/) — 모델 비종속 에이전트 운영 문서 묶음. 특정 모델 설정에 업무 시스템을 가두지 않는 구조를 다룹니다.
+- [`docs/agent-systems/agent-guide.md`](docs/agent-systems/agent-guide.md) — 특정 모델에 종속되지 않는 에이전트 워크스페이스 설계 가이드. 공용 SSOT 문서와 얇은 에이전트별 어댑터 구조를 설명합니다.
+- [`docs/agent-systems/utilities-registry.md`](docs/agent-systems/utilities-registry.md) — 재사용 스크립트·템플릿·스킬을 한 곳에서 찾기 위한 유틸리티 레지스트리 템플릿. Claude, Codex, 기타 에이전트가 같은 실행 로직을 공유하도록 설계합니다.
 
 ---
 
