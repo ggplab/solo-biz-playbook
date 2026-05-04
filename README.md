@@ -21,6 +21,7 @@
 | **전략 설계** | [`examples/my-canvas.md`](examples/my-canvas.md), [`template/lean-canvas.md`](template/lean-canvas.md) | 실제 사례와 빈 템플릿으로 자기 사업의 고객, 문제, 수익 구조를 정리 |
 | **의사결정 원칙** | [`docs/principles/`](docs/principles/) | 시급 방어선, 플랫폼 집중도, 부의 사다리처럼 반복 판단에 쓰는 규율 |
 | **운영 계측** | [`automation/claude-worklog/`](automation/claude-worklog/), [구조도](docs/diagrams/worklog-architecture.html) | AI 에이전트 세션을 캘린더·업무일지로 남겨 프로젝트별 투입 시간을 실측 |
+| **도구 사용 회계** | [`examples/monthly-claude-review/`](examples/monthly-claude-review/) | Claude Max 정액제 사용량을 매월 결제일 기준으로 자동 집계·복기 — 토큰·비용·카테고리·모델 분포로 다음 달 효율화 액션을 도출 |
 | **에이전트 운영** | [`docs/agent-systems/`](docs/agent-systems/), [구조도](docs/diagrams/agent-system-architecture.html) | Claude, Codex 등 특정 모델에 종속되지 않는 공용 문서·스크립트·어댑터 구조 |
 
 ---
