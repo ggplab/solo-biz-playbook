@@ -6,15 +6,6 @@
 
 ![Chart 04 — 업무 카테고리 funnel](../../docs/diagrams/04-category-funnel.png)
 
-```mermaid
-flowchart TD
-  A[Claude Code 사용] --> B["/insights 정성 분석"]
-  A --> C[JSONL 월간 집계]
-  C --> D[토큰·비용·세션·시간]
-  B --> E[월간 보고서]
-  D --> E
-  E --> F[다음 달 도구 사용 액션]
-```
 
 ---
 
