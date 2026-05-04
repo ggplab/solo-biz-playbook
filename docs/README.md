@@ -9,7 +9,7 @@ flowchart TD
   A[Docs] --> B[strategy-design]
   A --> C[principles]
   A --> D[operations-telemetry]
-  A --> E[tool-accounting]
+  A --> E[claude-monthly-review]
   A --> F[agent-systems]
   A --> G[diagrams]
 ```
@@ -21,7 +21,7 @@ flowchart TD
 | 전략 설계 | [`strategy-design/`](strategy-design/) | 린캔버스 사례와 템플릿을 연결해 사업 가설을 정리 |
 | 운영 원칙 | [`principles/`](principles/) | 가격, 플랫폼 의존도, 자산화 여부처럼 반복 판단에 쓰는 기준 |
 | 운영 계측 | [`operations-telemetry/`](operations-telemetry/) | AI 에이전트 세션을 캘린더·업무일지로 남기는 시간 회계 구조 |
-| 도구 사용 회계 | [`tool-accounting/`](tool-accounting/) | 정액제 AI 도구 사용량을 월간 단위로 복기하는 구조 |
+| Claude Monthly Review | [`claude-monthly-review/`](claude-monthly-review/) | 정액제 AI 도구 사용량을 월간 단위로 복기하는 공개 사례 |
 | 에이전트 운영 | [`agent-systems/`](agent-systems/) | Claude, Codex 등 특정 모델에 종속되지 않는 공용 문서·스크립트·어댑터 구조 |
 | 구조도 | [`diagrams/`](diagrams/) | README와 상세 문서에서 재사용하는 PNG/HTML 다이어그램 |
 | 참고 자료 | [`references.md`](references.md) | 저장소 내용을 뒷받침하는 외부 참고 링크 |

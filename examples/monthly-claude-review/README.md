@@ -2,7 +2,9 @@
 
 > **목적**: Claude Max 정액제(월 $200)를 쓰는 1인 사업자가 _내가 한 달 동안 Claude를 어디에 어떻게 썼는지_ 정량·정성으로 복기하기 위한 워크플로우와 보고서 템플릿.
 
-자기 사업의 _시간 회계_가 워크로그라면, 이 모듈은 _AI 도구 사용 회계_다. 결제일(매월 2일) 기준으로 직전 한 달을 돌아본다.
+자기 사업의 _시간 회계_가 워크로그라면, 이 모듈은 _Claude Monthly Review_다. 결제일(매월 2일) 기준으로 직전 한 달을 돌아본다.
+
+![Chart 04 — 업무 카테고리 funnel](../../docs/diagrams/claude-monthly-review-category-funnel.png)
 
 ```mermaid
 flowchart TD

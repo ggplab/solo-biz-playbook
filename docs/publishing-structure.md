@@ -15,8 +15,8 @@ solo-biz-playbook/
 │   │   └── README.md                 # 반복 의사결정 원칙 랜딩
 │   ├── operations-telemetry/
 │   │   └── README.md                 # 운영 계측 모듈 랜딩
-│   ├── tool-accounting/
-│   │   └── README.md                 # 도구 사용 회계 모듈 랜딩
+│   ├── claude-monthly-review/
+│   │   └── README.md                 # Claude Monthly Review 랜딩
 │   ├── agent-systems/
 │   │   └── README.md                 # 에이전트 운영 랜딩
 │   └── diagrams/
@@ -24,7 +24,7 @@ solo-biz-playbook/
 │   ├── README.md                     # 실제 사례 모음
 │   ├── my-canvas.md
 │   └── monthly-claude-review/
-│       └── README.md                 # 도구 사용 회계 랜딩
+│       └── README.md                 # Claude Monthly Review 사례 랜딩
 ├── template/
 │   └── README.md                     # 복사해서 쓰는 양식 모음
 └── automation/
@@ -53,7 +53,7 @@ solo-biz-playbook/
 | "일을 받을지 말지 판단하는 기준" | [`docs/principles/README.md`](principles/) | 원칙별 링크를 한 화면에 모아야 할 때 |
 | "프로젝트별 시간을 자동으로 재는 법" | [`docs/operations-telemetry/README.md`](operations-telemetry/) | 시간 계측 구조와 구현 예시를 함께 보여줄 때 |
 | "AI 에이전트 운영 체계" | [`docs/agent-systems/README.md`](agent-systems/) | 모델 비종속 운영 가이드를 보여줄 때 |
-| "Claude Max 월간 사용 복기" | [`docs/tool-accounting/README.md`](tool-accounting/) | 정량 리뷰 구조와 예시 보고서를 함께 보여줄 때 |
+| "Claude Max 월간 사용 복기" | [`docs/claude-monthly-review/README.md`](claude-monthly-review/) | 정량 리뷰 구조와 예시 보고서를 함께 보여줄 때 |
 | 자동화 묶음 전체 | [`automation/README.md`](../automation/) | 실행 가능한 자동화 목록을 먼저 보여줄 때 |
 | "워크로그 자동화" | [`automation/claude-worklog/README.md`](../automation/claude-worklog/) | 구현 방법과 스크립트를 보여줄 때 |
 

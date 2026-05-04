@@ -9,7 +9,7 @@
 ```mermaid
 flowchart LR
   A[1인 사업 운영] --> B[전략 설계]
-  A --> C[도구 사용 회계]
+  A --> C[Claude Monthly Review]
   B --> D[my-canvas.md]
   B --> E[my-canvas.png]
   C --> F[monthly-claude-review]
@@ -33,7 +33,7 @@ flowchart LR
 - [`my-canvas.png`](my-canvas.png) — 공개 가능한 이미지 버전
 - [`../template/lean-canvas.md`](../template/lean-canvas.md) — 독자가 복사해 쓰는 빈 템플릿
 
-## 도구 사용 회계
+## Claude Monthly Review
 
 Claude Max 같은 정액제 AI 도구는 청구서만 봐서는 실제 사용 가치를 알기 어렵습니다. [`monthly-claude-review/`](monthly-claude-review/)는 토큰, 비용, 세션, 시간, 프로젝트 분포를 월간 단위로 집계해 다음 달의 도구 사용 방식을 조정하는 예시입니다.
 
