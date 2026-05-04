@@ -109,6 +109,14 @@ worklog-sync ->  scripts/worklog_sync.py
 | `agent_commit.md` | adapter | `adapters/claude/skills/commit/` | 커밋 전 점검·메시지 생성 규칙 | Claude |
 | `agent_review.md` | adapter | `adapters/codex/skills/review/` | 코드 리뷰 체크리스트 | Codex |
 
+### Publication Safety
+
+| Name | Type | Location | Purpose | Adapter |
+|---|---|---|---|---|
+| `publication-safety.md` | reference | `docs/publication-safety.md` | 공개 가능한 브랜딩과 비식별화가 필요한 단서의 경계 규칙 | 모든 에이전트 |
+| `public_safety_check.py` | script | `scripts/public_safety_check.py` | 푸시 전 비밀값·고유명사·로컬 경로 후보를 스캔 | 모든 에이전트 |
+| `install_public_safety_hook.sh` | script | `scripts/install_public_safety_hook.sh` | `git push` 전 자동 점검 hook 설치 | 모든 에이전트 |
+
 ---
 
 ## 5. 새 유틸리티 추가 절차
@@ -119,7 +127,8 @@ worklog-sync ->  scripts/worklog_sync.py
 4. 에이전트별 호출 규칙은 `adapters/`에 둡니다.
 5. `UTILITIES.md`에 한 줄 추가합니다.
 6. 비밀값, 개인명, 고객명, 실제 ID가 들어갔는지 확인합니다.
-7. 가능하면 dry-run 명령과 최소 테스트 명령을 함께 적습니다.
+7. 공개 예시·리포트·차트가 포함되면 `python3 scripts/public_safety_check.py --staged`를 실행합니다.
+8. 가능하면 dry-run 명령과 최소 테스트 명령을 함께 적습니다.
 
 ---
 

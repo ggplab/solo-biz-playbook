@@ -5,6 +5,7 @@ This repository is a public playbook. Keep all changes public-safe, model-neutra
 ## Read First
 
 - `README.md` for repository purpose and structure
+- `docs/publication-safety.md` before publishing examples, reports, charts, or automation logs
 - `docs/agent-systems/agent-guide.md` for model-neutral agent workspace principles
 - `docs/agent-systems/utilities-registry.md` before adding reusable automation or scripts
 
@@ -14,6 +15,8 @@ This repository is a public playbook. Keep all changes public-safe, model-neutra
 - Put reusable execution logic in scripts or documented templates, then add thin model-specific adapters only when necessary.
 - Use placeholders for private identifiers: `user@example.com`, `$HOME/workspace`, `SERVICE_API_KEY`, `WORKLOG_CALENDAR_ID`.
 - Do not commit actual API keys, calendar IDs, database IDs, private repo names, customer names, or local absolute paths.
+- Keep useful public branding, but generalize private customers, contracts, internal project names, and personal infrastructure. Use `docs/publication-safety.md` as the boundary.
+- Before pushing public examples or reports, run `python3 scripts/public_safety_check.py --staged` and resolve any `BLOCK` findings. Review `REVIEW` findings intentionally.
 - Prefer examples that can run without a specific AI model. If a model-specific feature is mentioned, describe it as one adapter option.
 
 ## Project Notes

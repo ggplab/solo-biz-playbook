@@ -24,6 +24,7 @@ flowchart TD
 | Claude Monthly Review | [`claude-monthly-review/`](claude-monthly-review/) | 정액제 AI 도구 사용량을 월간 단위로 복기하는 공개 사례 |
 | 에이전트 운영 | [`agent-systems/`](agent-systems/) | Claude, Codex 등 특정 모델에 종속되지 않는 공용 문서·스크립트·어댑터 구조 |
 | 구조도 | [`diagrams/`](diagrams/) | README와 상세 문서에서 재사용하는 PNG/HTML 다이어그램 |
+| 공개 안전 규칙 | [`publication-safety.md`](publication-safety.md) | 브랜딩에 도움이 되는 공개 정보와 비식별화해야 할 정보를 구분하는 기준 |
 | 참고 자료 | [`references.md`](references.md) | 저장소 내용을 뒷받침하는 외부 참고 링크 |
 
 ## 위계 규칙
