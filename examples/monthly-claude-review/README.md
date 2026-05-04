@@ -4,6 +4,16 @@
 
 자기 사업의 _시간 회계_가 워크로그라면, 이 모듈은 _AI 도구 사용 회계_다. 결제일(매월 2일) 기준으로 직전 한 달을 돌아본다.
 
+```mermaid
+flowchart TD
+  A[Claude Code 사용] --> B[/insights 정성 분석]
+  A --> C[JSONL 월간 집계]
+  C --> D[토큰·비용·세션·시간]
+  B --> E[월간 보고서]
+  D --> E
+  E --> F[다음 달 도구 사용 액션]
+```
+
 ---
 
 ## 왜 만들었나
@@ -74,14 +84,17 @@
 
 ## 자동화 구조
 
-```
-매월 2일 09:00 KST
-  └─ launchd: com.limjung.claude-monthly-review.plist
-       └─ scripts/run_monthly.sh
-            ├─ 직전 빌링 사이클 계산 (전월 2일 ~ 당월 1일)
-            ├─ python3 aggregate.py --start ... --end ... --output-subdir YYYY-MM
-            ├─ Discord 웹훅 + macOS 알림으로 트리거
-            └─ 사용자: /insights 실행 + 보고서 작성
+```mermaid
+flowchart TD
+  A[매월 2일 09:00 KST] --> B[launchd]
+  B --> C[scripts/run_monthly.sh]
+  C --> D[직전 빌링 사이클 계산]
+  C --> E[aggregate.py 월간 집계]
+  C --> F[알림으로 보고서 작성 트리거]
+  D --> G[YYYY-MM 산출물]
+  E --> G
+  F --> H[/insights 실행 + 보고서 작성]
+  G --> H
 ```
 
 ---

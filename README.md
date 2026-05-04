@@ -16,13 +16,22 @@
 
 ## 구성
 
-| 모듈 | 위치 | 쓰임 |
+| 모듈 | 랜딩 페이지 | 쓰임 |
 |---|---|---|
-| **전략 설계** | [`examples/my-canvas.md`](examples/my-canvas.md), [`template/lean-canvas.md`](template/lean-canvas.md) | 실제 사례와 빈 템플릿으로 자기 사업의 고객, 문제, 수익 구조를 정리 |
+| **전략 설계** | [`docs/strategy-design/`](docs/strategy-design/) | 실제 사례와 빈 템플릿으로 자기 사업의 고객, 문제, 수익 구조를 정리 |
 | **의사결정 원칙** | [`docs/principles/`](docs/principles/) | 시급 방어선, 플랫폼 집중도, 부의 사다리처럼 반복 판단에 쓰는 규율 |
-| **운영 계측** | [`automation/claude-worklog/`](automation/claude-worklog/), [구조도](docs/diagrams/worklog-architecture.html) | AI 에이전트 세션을 캘린더·업무일지로 남겨 프로젝트별 투입 시간을 실측 |
-| **도구 사용 회계** | [`examples/monthly-claude-review/`](examples/monthly-claude-review/) | Claude Max 정액제 사용량을 매월 결제일 기준으로 자동 집계·복기 — 토큰·비용·카테고리·모델 분포로 다음 달 효율화 액션을 도출 |
-| **에이전트 운영** | [`docs/agent-systems/`](docs/agent-systems/), [구조도](docs/diagrams/agent-system-architecture.html) | Claude, Codex 등 특정 모델에 종속되지 않는 공용 문서·스크립트·어댑터 구조 |
+| **운영 계측** | [`docs/operations-telemetry/`](docs/operations-telemetry/) | AI 에이전트 세션을 캘린더·업무일지로 남겨 프로젝트별 투입 시간을 실측 |
+| **도구 사용 회계** | [`docs/tool-accounting/`](docs/tool-accounting/) | Claude Max 정액제 사용량을 매월 결제일 기준으로 자동 집계·복기 — 토큰·비용·카테고리·모델 분포로 다음 달 효율화 액션을 도출 |
+| **에이전트 운영** | [`docs/agent-systems/`](docs/agent-systems/) | Claude, Codex 등 특정 모델에 종속되지 않는 공용 문서·스크립트·어댑터 구조 |
+
+## 디렉토리 위계
+
+| 계층 | 역할 |
+|---|---|
+| [`docs/`](docs/) | 원칙, 설명, 구조도 |
+| [`examples/`](examples/) | 실제 사용 사례의 공개·익명화 버전 |
+| [`template/`](template/) | 독자가 복사해서 채울 빈 양식 |
+| [`automation/`](automation/) | 실행 가능한 자동화 예시와 스크립트 |
 
 ## 공유용 링크 맵
 
@@ -30,12 +39,14 @@ GitHub 메인 페이지는 전체 지도입니다. Threads나 블로그에서는
 
 | 공유 주제 | 바로 보낼 링크 |
 |---|---|
-| 실제 사례 모음 | [`examples/`](examples/) |
-| 복사해서 쓰는 템플릿 | [`template/`](template/) |
+| 전략 설계 | [`docs/strategy-design/`](docs/strategy-design/) |
 | 1인 사업 운영 원칙 | [`docs/principles/`](docs/principles/) |
-| Claude Max 월간 사용 복기 | [`examples/monthly-claude-review/`](examples/monthly-claude-review/) |
-| 워크로그 자동화 | [`automation/claude-worklog/`](automation/claude-worklog/) |
+| 운영 계측 | [`docs/operations-telemetry/`](docs/operations-telemetry/) |
+| Claude Max 월간 사용 복기 | [`docs/tool-accounting/`](docs/tool-accounting/) |
 | 에이전트 운영 체계 | [`docs/agent-systems/`](docs/agent-systems/) |
+| 실제 사례만 보기 | [`examples/`](examples/) |
+| 복사해서 쓰는 템플릿만 보기 | [`template/`](template/) |
+| 실행 자동화만 보기 | [`automation/`](automation/) |
 
 디렉토리별 README 작성 원칙은 [`docs/publishing-structure.md`](docs/publishing-structure.md)에 정리했습니다.
 
@@ -51,6 +62,7 @@ GitHub 메인 페이지는 전체 지도입니다. Threads나 블로그에서는
 
 핵심 파일:
 
+- [`docs/strategy-design/`](docs/strategy-design/) — 전략 설계 모듈 랜딩
 - [`examples/my-canvas.md`](examples/my-canvas.md) — 실제로 채운 린캔버스
 - [`template/lean-canvas.md`](template/lean-canvas.md) — 독자가 복사해 쓰는 빈 템플릿
 - [`docs/principles/`](docs/principles/) — 캔버스에서 추출한 반복 의사결정 원칙
@@ -63,9 +75,28 @@ GitHub 메인 페이지는 전체 지도입니다. Threads나 블로그에서는
 
 ![운영 계측 구조도](docs/diagrams/worklog-architecture.png)
 
+- [`docs/operations-telemetry/`](docs/operations-telemetry/) — 운영 계측 모듈 랜딩
 - [`automation/claude-worklog/`](automation/claude-worklog/) — Claude Code / Codex 세션이 끝날 때마다 Google 캘린더·Obsidian 업무일지에 자동 기록되는 Stop hook 시스템
 - [운영 계측 구조도 HTML](docs/diagrams/worklog-architecture.html) — 세션 로그가 지표, 캘린더, 업무일지로 변환되는 흐름
 - 분기 회고 때 프로젝트별 누적 시간을 필터링해서 [원칙 01(시급 방어선)](docs/principles/01-pricing-floor.md)의 실측 근거로 씁니다.
+
+---
+
+## 도구 사용 회계
+
+Claude Max 같은 정액제 AI 도구는 청구서만 봐서는 실제 사용 가치를 알기 어렵습니다. 월간 단위로 토큰, 비용, 세션, 시간, 프로젝트 분포를 집계하면 다음 달에 줄일 마찰과 유지할 고효율 사용 패턴이 보입니다.
+
+```mermaid
+flowchart LR
+  A[AI 도구 사용] --> B[월간 집계]
+  B --> C[비용·토큰·시간]
+  B --> D[정성 인사이트]
+  C --> E[다음 달 액션]
+  D --> E
+```
+
+- [`docs/tool-accounting/`](docs/tool-accounting/) — 도구 사용 회계 모듈 랜딩
+- [`examples/monthly-claude-review/`](examples/monthly-claude-review/) — Claude Max 월간 사용 복기 예시
 
 ---
 

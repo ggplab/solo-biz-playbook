@@ -2,6 +2,8 @@
 
 > Claude Code / Codex 세션을 끝낼 때마다 **Google 캘린더에 "내가 한 작업" 이벤트가 자동으로 생기고**, 같은 내용이 Obsidian 업무일지에도 기록되는 개인 계측(self-telemetry) 시스템입니다. Stop hook 하나로 돌아갑니다. 전체 흐름은 아래 [데이터 흐름](#데이터-흐름) 섹션 참조.
 
+![운영 계측 구조도](../../docs/diagrams/worklog-architecture.png)
+
 ---
 
 ## 왜 만들었나
@@ -51,6 +53,8 @@ flowchart TD
     C --> E["Google Calendar<br/>Worklog(auto)"]
     D --> F["Obsidian Vault<br/>업무일지/YYYY-MM-DD.md"]
 ```
+
+[운영 계측 구조도 HTML](../../docs/diagrams/worklog-architecture.html)도 함께 제공합니다.
 
 ---
 
