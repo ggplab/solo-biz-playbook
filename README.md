@@ -21,7 +21,7 @@
 | **전략 설계** | [`docs/strategy-design/`](docs/strategy-design/) | 실제 사례와 빈 템플릿으로 자기 사업의 고객, 문제, 수익 구조를 정리 |
 | **의사결정 원칙** | [`docs/principles/`](docs/principles/) | 시급 방어선, 플랫폼 집중도, 부의 사다리처럼 반복 판단에 쓰는 규율 |
 | **운영 계측** | [`docs/operations-telemetry/`](docs/operations-telemetry/) | AI 에이전트 세션을 캘린더·업무일지로 남겨 프로젝트별 투입 시간을 실측 |
-| **Claude Monthly Review** | [`docs/claude-monthly-review/`](docs/claude-monthly-review/) | Claude Max 정액제 사용량을 매월 결제일 기준으로 자동 집계·복기 — 토큰·비용·카테고리·모델 분포로 다음 달 효율화 액션을 도출 |
+| **Claude Monthly Review** | [`docs/claude-monthly-review/`](docs/claude-monthly-review/) | Claude 구독 요금제 사용량을 매월 결제일 기준으로 자동 집계·복기 — 토큰·비용·카테고리·모델 분포로 다음 달 효율화 액션을 도출 |
 | **에이전트 운영** | [`docs/agent-systems/`](docs/agent-systems/) | Claude, Codex 등 특정 모델에 종속되지 않는 공용 문서·스크립트·어댑터 구조 |
 
 ## 디렉토리 위계
@@ -42,7 +42,7 @@ GitHub 메인 페이지는 전체 지도입니다. Threads나 블로그에서는
 | 전략 설계 | [`docs/strategy-design/`](docs/strategy-design/) |
 | 1인 사업 운영 원칙 | [`docs/principles/`](docs/principles/) |
 | 운영 계측 | [`docs/operations-telemetry/`](docs/operations-telemetry/) |
-| Claude Max 월간 사용 복기 | [`docs/claude-monthly-review/`](docs/claude-monthly-review/) |
+| Claude 구독 요금제 월간 사용 복기 | [`docs/claude-monthly-review/`](docs/claude-monthly-review/) |
 | 에이전트 운영 체계 | [`docs/agent-systems/`](docs/agent-systems/) |
 | 실제 사례만 보기 | [`examples/`](examples/) |
 | 복사해서 쓰는 템플릿만 보기 | [`template/`](template/) |
@@ -84,7 +84,7 @@ GitHub 메인 페이지는 전체 지도입니다. Threads나 블로그에서는
 
 ## Claude Monthly Review
 
-Claude Max 같은 정액제 AI 도구는 청구서만 봐서는 실제 사용 가치를 알기 어렵습니다. 월간 단위로 토큰, 비용, 세션, 시간, 프로젝트 분포를 집계하면 다음 달에 줄일 마찰과 유지할 고효율 사용 패턴이 보입니다.
+Claude 유료 구독 요금제는 청구서만 봐서는 실제 사용 가치를 알기 어렵습니다. 월간 단위로 토큰, 비용, 세션, 시간, 프로젝트 분포를 집계하면 다음 달에 줄일 마찰과 유지할 고효율 사용 패턴이 보입니다.
 
 ![Chart 04 — 업무 카테고리 funnel](docs/diagrams/04-category-funnel.png)
 
@@ -98,7 +98,7 @@ flowchart LR
 ```
 
 - [`docs/claude-monthly-review/`](docs/claude-monthly-review/) — Claude Monthly Review 랜딩
-- [`examples/monthly-claude-review/`](examples/monthly-claude-review/) — Claude Max 월간 사용 복기 예시
+- [`examples/monthly-claude-review/`](examples/monthly-claude-review/) — Claude 구독 요금제 월간 사용 복기 예시
 
 ---
 

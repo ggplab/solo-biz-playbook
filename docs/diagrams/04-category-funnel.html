@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>업무 카테고리별 토큰 분포 — 2026-04 Claude Subscription Review</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#f6f5f4;--paper-2:#ffffff;--ink:#31302e;--muted:#615d59;--soft:#a39e98;--rule:rgba(49,48,46,0.12);--accent:#2563EB;--accent-tint:rgba(37,99,235,0.10);--accent-strong:#1D4ED8;}
+*{box-sizing:border-box}html,body{margin:0;background:var(--paper);color:var(--ink);font-family:'Pretendard',sans-serif}
+body{padding:48px 24px;display:flex;justify-content:center}
+.wrap{width:100%;max-width:1180px}
+.eyebrow{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:0.18em;color:var(--muted);text-transform:uppercase;margin:0 0 8px}
+h1{font-family:'Instrument Serif',serif;font-weight:400;font-size:34px;line-height:1.15;margin:0 0 6px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 28px}
+.card{background:var(--paper-2);border:1px solid var(--rule);border-radius:8px;padding:24px;overflow-x:auto}
+svg{display:block;width:100%;height:auto;max-width:1120px;margin:0 auto}
+.foot{margin-top:18px;font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.10em;border-top:1px solid var(--rule);padding-top:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="eyebrow">CHART 04 · CLAUDE SUBSCRIPTION 2026-04</p>
+  <h1>업무 카테고리별 토큰·비용 — 7개 라인</h1>
+  <p class="sub">인프라·도구가 44% — 신규 자동화·홈서버 구축의 한 달이었다는 신호 · 책 집필 라인은 04-20부터 본격화돼 한 달 비중은 작지만 5월 가장 큰 폭으로 성장 예상</p>
+  <div class="card">
+    <svg viewBox="0 0 1120 580" xmlns="http://www.w3.org/2000/svg" role="img">
+      <defs>
+        <pattern id="dots4" width="22" height="22" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="0.9" fill="rgba(49,48,46,0.10)"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="#f6f5f4"/>
+      <rect width="100%" height="100%" fill="url(#dots4)" opacity="0.45"/>
+
+      <!-- Column headers -->
+      <text x="240" y="40" font-family="Geist Mono,monospace" font-size="9" letter-spacing="0.14em" fill="#615d59" text-anchor="end">CATEGORY</text>
+      <text x="560" y="40" font-family="Geist Mono,monospace" font-size="9" letter-spacing="0.14em" fill="#615d59" text-anchor="middle">TOKEN VOLUME (스케일: 너비 ∝ 토큰)</text>
+      <text x="880" y="40" font-family="Geist Mono,monospace" font-size="9" letter-spacing="0.14em" fill="#615d59">VALUE</text>
+      <line x1="40" y1="50" x2="1080" y2="50" stroke="rgba(49,48,46,0.12)" stroke-width="0.8"/>
+
+      <!-- Layout: bars centered at x=560, max width 600 (range 260..860).
+           Labels right-anchored at x=240. Values left-anchored at x=880.
+           Row height 56, gap 12. y_start=72. -->
+
+      <!-- Row 1: 인프라·도구·일반작업 911M / 44.4% / $2,307 — width 600 -->
+      <text x="240" y="96" font-family="Pretendard,sans-serif" font-size="14" font-weight="700" fill="#31302e" text-anchor="end">인프라 · 도구 · 일반작업</text>
+      <text x="240" y="116" font-family="Pretendard,sans-serif" font-size="10" fill="#615d59" text-anchor="end">오늘할일 · 홈서버 · CC셋업</text>
+      <rect x="260" y="80" width="600" height="56" rx="4" fill="rgba(49,48,46,0.05)" stroke="#615d59" stroke-width="1"/>
+      <text x="560" y="114" font-family="Geist Mono,monospace" font-size="11" fill="#a39e98" text-anchor="middle" font-style="italic">신규 인프라 구축의 달</text>
+      <text x="880" y="100" font-family="Geist Mono,monospace" font-size="16" font-weight="600" fill="#31302e">911M</text>
+      <text x="880" y="120" font-family="Geist Mono,monospace" font-size="11" fill="#615d59">44.4% · $2,307</text>
+
+      <!-- Row 2: 교육·멘토링 346M / 16.9% / $876 — width 228 -->
+      <text x="240" y="164" font-family="Pretendard,sans-serif" font-size="14" font-weight="700" fill="#31302e" text-anchor="end">교육 · 멘토링</text>
+      <text x="240" y="184" font-family="Pretendard,sans-serif" font-size="10" fill="#615d59" text-anchor="end">챌린지 · 강사 라인 4종</text>
+      <rect x="446" y="148" width="228" height="56" rx="4" fill="rgba(49,48,46,0.05)" stroke="#615d59" stroke-width="1"/>
+      <text x="880" y="168" font-family="Geist Mono,monospace" font-size="16" font-weight="600" fill="#31302e">346M</text>
+      <text x="880" y="188" font-family="Geist Mono,monospace" font-size="11" fill="#615d59">16.9% · $876</text>
+
+      <!-- Row 3: ggplab 홈페이지 (전환) 303M / 14.7% / $766 — width 200 -->
+      <text x="240" y="232" font-family="Pretendard,sans-serif" font-size="14" font-weight="700" fill="#31302e" text-anchor="end">홈페이지 (전환)</text>
+      <text x="240" y="252" font-family="Pretendard,sans-serif" font-size="10" fill="#615d59" text-anchor="end">멘토링·강의 전환 라인</text>
+      <rect x="460" y="216" width="200" height="56" rx="4" fill="rgba(49,48,46,0.05)" stroke="#615d59" stroke-width="1"/>
+      <text x="880" y="236" font-family="Geist Mono,monospace" font-size="16" font-weight="600" fill="#31302e">303M</text>
+      <text x="880" y="256" font-family="Geist Mono,monospace" font-size="11" fill="#615d59">14.7% · $766</text>
+
+      <!-- Row 4: n8n 자동화·콘텐츠 293M / 14.3% / $740 — width 193 -->
+      <text x="240" y="300" font-family="Pretendard,sans-serif" font-size="14" font-weight="700" fill="#31302e" text-anchor="end">n8n 자동화 · 콘텐츠</text>
+      <text x="240" y="320" font-family="Pretendard,sans-serif" font-size="10" fill="#615d59" text-anchor="end">유튜브 · 플레이북</text>
+      <rect x="463" y="284" width="193" height="56" rx="4" fill="rgba(49,48,46,0.05)" stroke="#615d59" stroke-width="1"/>
+      <text x="880" y="304" font-family="Geist Mono,monospace" font-size="16" font-weight="600" fill="#31302e">293M</text>
+      <text x="880" y="324" font-family="Geist Mono,monospace" font-size="11" fill="#615d59">14.3% · $740</text>
+
+      <!-- Row 5: 콘텐츠·SNS 114M / 5.5% / $288 — width 75 -->
+      <text x="240" y="368" font-family="Pretendard,sans-serif" font-size="14" font-weight="700" fill="#31302e" text-anchor="end">콘텐츠 · SNS</text>
+      <text x="240" y="388" font-family="Pretendard,sans-serif" font-size="10" fill="#615d59" text-anchor="end">외부 협업 + SNS 채널</text>
+      <rect x="522" y="352" width="75" height="56" rx="4" fill="rgba(49,48,46,0.05)" stroke="#615d59" stroke-width="1"/>
+      <text x="880" y="372" font-family="Geist Mono,monospace" font-size="16" font-weight="600" fill="#31302e">114M</text>
+      <text x="880" y="392" font-family="Geist Mono,monospace" font-size="11" fill="#615d59">5.5% · $288</text>
+
+      <!-- Row 6: 책 집필 75M / 3.7% / $191 — width 49 — FOCAL -->
+      <text x="240" y="436" font-family="Pretendard,sans-serif" font-size="14" font-weight="700" fill="#1D4ED8" text-anchor="end">책 집필 ★</text>
+      <text x="240" y="456" font-family="Pretendard,sans-serif" font-size="10" fill="#1D4ED8" text-anchor="end">04-20 시작 · 5월 최우선 라인</text>
+      <rect x="535" y="420" width="49" height="56" rx="4" fill="rgba(37,99,235,0.10)" stroke="#2563EB" stroke-width="1.4"/>
+      <text x="880" y="440" font-family="Geist Mono,monospace" font-size="16" font-weight="600" fill="#1D4ED8">75M</text>
+      <text x="880" y="460" font-family="Geist Mono,monospace" font-size="11" fill="#1D4ED8">3.7% · $191</text>
+
+      <!-- Row 7: 인풋·리서치 11M / 0.5% / $27 — width 7 -->
+      <text x="240" y="504" font-family="Pretendard,sans-serif" font-size="14" font-weight="700" fill="#615d59" text-anchor="end">인풋 · 리서치</text>
+      <text x="240" y="524" font-family="Pretendard,sans-serif" font-size="10" fill="#a39e98" text-anchor="end">tech-research-hub · 5월 보강 필요</text>
+      <rect x="556" y="488" width="8" height="56" rx="2" fill="rgba(49,48,46,0.05)" stroke="#a39e98" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="880" y="508" font-family="Geist Mono,monospace" font-size="16" font-weight="600" fill="#615d59">11M</text>
+      <text x="880" y="528" font-family="Geist Mono,monospace" font-size="11" fill="#a39e98">0.5% · $27</text>
+
+      <!-- Legend strip -->
+      <line x1="40" y1="552" x2="1080" y2="552" stroke="rgba(49,48,46,0.12)" stroke-width="0.8"/>
+      <text x="40" y="572" font-family="Geist Mono,monospace" font-size="8" fill="#615d59" letter-spacing="0.14em">LEGEND</text>
+      <rect x="110" y="564" width="14" height="9" rx="2" fill="rgba(37,99,235,0.10)" stroke="#2563EB" stroke-width="1"/>
+      <text x="130" y="572" font-size="9" fill="#615d59">전략 포커스 · 5월 우선순위</text>
+      <rect x="320" y="564" width="14" height="9" rx="2" fill="rgba(49,48,46,0.05)" stroke="#615d59" stroke-width="1"/>
+      <text x="340" y="572" font-size="9" fill="#615d59">현재 활성 라인</text>
+      <rect x="460" y="564" width="14" height="9" rx="2" fill="rgba(49,48,46,0.05)" stroke="#a39e98" stroke-width="1" stroke-dasharray="4,3"/>
+      <text x="480" y="572" font-size="9" fill="#615d59">위축 · 보강 필요</text>
+      <text x="900" y="572" font-family="Geist Mono,monospace" font-size="9" fill="#615d59">너비 = 토큰 비례 · USD = API 환산</text>
+    </svg>
+  </div>
+  <div class="foot">CLAUDE-MONTHLY-REVIEW · 2026-04 · CHART 04 · 카테고리는 §2-1 매핑 기준</div>
+</div>
+</body>
+</html>

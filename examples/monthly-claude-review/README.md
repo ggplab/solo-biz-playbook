@@ -1,6 +1,6 @@
-# Monthly Claude Review — 1인 사업자의 Claude Max 사용 복기
+# Monthly Claude Review — 1인 사업자의 Claude 구독 요금제 사용 복기
 
-> **목적**: Claude Max 정액제(월 $200)를 쓰는 1인 사업자가 _내가 한 달 동안 Claude를 어디에 어떻게 썼는지_ 정량·정성으로 복기하기 위한 워크플로우와 보고서 템플릿.
+> **목적**: Claude 유료 구독 요금제를 쓰는 1인 사업자가 _내가 한 달 동안 Claude를 어디에 어떻게 썼는지_ 정량·정성으로 복기하기 위한 워크플로우와 보고서 템플릿.
 
 자기 사업의 _시간 회계_가 워크로그라면, 이 모듈은 _Claude Monthly Review_다. 결제일(매월 2일) 기준으로 직전 한 달을 돌아본다.
 
@@ -8,7 +8,7 @@
 
 ```mermaid
 flowchart TD
-  A[Claude Code 사용] --> B[/insights 정성 분석]
+  A[Claude Code 사용] --> B["/insights 정성 분석"]
   A --> C[JSONL 월간 집계]
   C --> D[토큰·비용·세션·시간]
   B --> E[월간 보고서]
@@ -20,7 +20,7 @@ flowchart TD
 
 ## 왜 만들었나
 
-- Claude Max는 정액제라 "내가 얼마치 썼는가"를 청구서로 알 수 없다.
+- Claude 구독 요금제는 정액제라 "내가 얼마치 썼는가"를 청구서로 알 수 없다.
 - 그러나 토큰·세션·시간·프로젝트 분포는 _어디에 무게가 실렸는지_를 정확히 보여준다.
 - 단순 사용량이 아니라 **"무엇이 새로 인프라화됐는가, 어디서 마찰이 반복됐는가, 다음 달엔 어떻게 다르게 쓸 것인가"** 를 도출하는 게 목적.
 
@@ -30,7 +30,7 @@ flowchart TD
 
 1. **`/insights` 실행** (Claude Code 빌트인) — 빌트인 자체 분석 결과를 받는다.
 2. **JSONL 집계 스크립트** — `~/.claude/projects/` 의 모든 세션 transcript를 KST 기준 월간 윈도우로 집계해 CSV/JSON 산출.
-3. **모델별 가격 적용** — Anthropic 표시 단가 환산해 USD 비용 추정 (Max ROI 계산).
+3. **모델별 가격 적용** — Anthropic 표시 단가 환산해 USD 비용 추정 (구독 ROI 계산).
 4. **보고서 작성** — 정량 + 정성 + 인사이트 + 다음 달 액션 5단으로 구성.
 5. **자동화** — 매월 2일 09시 launchd가 ①~③을 자동 실행, Discord 알림으로 보고서 작성을 트리거.
 
@@ -79,7 +79,7 @@ flowchart TD
 | `total_tokens` | input + output + cache_creation + cache_read |
 | `active_minutes` | 세션 내 인접 메시지 gap ≤ 5분 구간만 합산 (5분 초과는 idle 처리) |
 | `cost_usd` | 모델별 토큰 × Anthropic 표시 단가 (cache 5m TTL = 1.25× input 가정) |
-| `Max ROI` | `total_cost_usd / 200` — 정액제 대비 실제 사용 가치 배수 |
+| `subscription_roi` | `api_equivalent_cost_usd / monthly_subscription_fee_usd` — 구독료 대비 실제 사용 가치 배수 |
 | `weighted_per_M` | `total_cost_usd / (total_tokens / 1M)` — 가중평균 단가 |
 
 ---
@@ -95,7 +95,7 @@ flowchart TD
   C --> F[알림으로 보고서 작성 트리거]
   D --> G[YYYY-MM 산출물]
   E --> G
-  F --> H[/insights 실행 + 보고서 작성]
+  F --> H["/insights 실행 + 보고서 작성"]
   G --> H
 ```
 
