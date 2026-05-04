@@ -24,6 +24,21 @@
 | **도구 사용 회계** | [`examples/monthly-claude-review/`](examples/monthly-claude-review/) | Claude Max 정액제 사용량을 매월 결제일 기준으로 자동 집계·복기 — 토큰·비용·카테고리·모델 분포로 다음 달 효율화 액션을 도출 |
 | **에이전트 운영** | [`docs/agent-systems/`](docs/agent-systems/), [구조도](docs/diagrams/agent-system-architecture.html) | Claude, Codex 등 특정 모델에 종속되지 않는 공용 문서·스크립트·어댑터 구조 |
 
+## 공유용 링크 맵
+
+GitHub 메인 페이지는 전체 지도입니다. Threads나 블로그에서는 글의 주제에 맞는 디렉토리 README를 직접 링크하면 독자가 덜 헤맵니다.
+
+| 공유 주제 | 바로 보낼 링크 |
+|---|---|
+| 실제 사례 모음 | [`examples/`](examples/) |
+| 복사해서 쓰는 템플릿 | [`template/`](template/) |
+| 1인 사업 운영 원칙 | [`docs/principles/`](docs/principles/) |
+| Claude Max 월간 사용 복기 | [`examples/monthly-claude-review/`](examples/monthly-claude-review/) |
+| 워크로그 자동화 | [`automation/claude-worklog/`](automation/claude-worklog/) |
+| 에이전트 운영 체계 | [`docs/agent-systems/`](docs/agent-systems/) |
+
+디렉토리별 README 작성 원칙은 [`docs/publishing-structure.md`](docs/publishing-structure.md)에 정리했습니다.
+
 ---
 
 ## 전략 설계
