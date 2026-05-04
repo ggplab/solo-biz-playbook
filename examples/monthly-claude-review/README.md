@@ -4,7 +4,7 @@
 
 자기 사업의 _시간 회계_가 워크로그라면, 이 모듈은 _Claude Monthly Review_다. 결제일(매월 2일) 기준으로 직전 한 달을 돌아본다.
 
-![Chart 04 — 업무 카테고리 funnel](../../docs/diagrams/claude-monthly-review-category-funnel.png)
+![Chart 04 — 업무 카테고리 funnel](../../docs/diagrams/04-category-funnel.png)
 
 ```mermaid
 flowchart TD

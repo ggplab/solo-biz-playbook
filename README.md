@@ -86,7 +86,7 @@ GitHub 메인 페이지는 전체 지도입니다. Threads나 블로그에서는
 
 Claude Max 같은 정액제 AI 도구는 청구서만 봐서는 실제 사용 가치를 알기 어렵습니다. 월간 단위로 토큰, 비용, 세션, 시간, 프로젝트 분포를 집계하면 다음 달에 줄일 마찰과 유지할 고효율 사용 패턴이 보입니다.
 
-![Chart 04 — 업무 카테고리 funnel](docs/diagrams/claude-monthly-review-category-funnel.png)
+![Chart 04 — 업무 카테고리 funnel](docs/diagrams/04-category-funnel.png)
 
 ```mermaid
 flowchart LR
