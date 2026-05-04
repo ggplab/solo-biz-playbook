@@ -24,7 +24,6 @@ flowchart TD
 | 월간 리뷰 예시 | [`../../examples/monthly-claude-review/`](../../examples/monthly-claude-review/) | Claude Max 사용량을 익명화해서 공개한 보고서와 워크플로 |
 | 2026-04 보고서 | [`../../examples/monthly-claude-review/2026-04-anonymized.md`](../../examples/monthly-claude-review/2026-04-anonymized.md) | 첫 달 실제 보고서의 공개 가능 버전 |
 | Chart 04 PNG | [`../diagrams/claude-monthly-review-category-funnel.png`](../diagrams/claude-monthly-review-category-funnel.png) | 업무 카테고리별 토큰 비중을 바로 볼 수 있는 대표 이미지 |
-| Chart 04 HTML | [`../diagrams/claude-monthly-review-category-funnel.html`](../diagrams/claude-monthly-review-category-funnel.html) | PNG 재생성이나 스타일 수정을 위한 원본 |
 | 운영 계측 | [`../operations-telemetry/`](../operations-telemetry/) | 시간 회계와 Claude Monthly Review를 연결하는 기반 |
 
 ## 읽는 순서
