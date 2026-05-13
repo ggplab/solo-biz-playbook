@@ -12,9 +12,12 @@ flowchart LR
   D --> E[02 platform concentration]
   A --> F{자산 축적}
   F --> G[03 wealth ladder]
+  A --> S{보안 사고}
+  S --> I[04 incident response]
   C --> H[수락 / 보류 / 거절]
   E --> H
   G --> H
+  I --> H
 ```
 
 ## 원칙 목록
@@ -24,6 +27,7 @@ flowchart LR
 | 시급 방어선 | [`01-pricing-floor.md`](01-pricing-floor.md) | 이 일이 최소 시간당 기준을 지키는가? |
 | 플랫폼 집중도 | [`02-platform-concentration.md`](02-platform-concentration.md) | 특정 플랫폼 하나에 과도하게 의존하고 있지 않은가? |
 | 부의 사다리 | [`03-wealth-ladder.md`](03-wealth-ladder.md) | 이 일이 일회성 노동인지, 재사용 가능한 자산인지 구분했는가? |
+| 보안 사고 대응 | [`04-security-incident-response.md`](04-security-incident-response.md) | 공급망 공격·자격증명 침해를 1차 소스로 검증하고 blast radius 순으로 대응하는가? |
 
 ## 작성 규칙
 
