@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Brand Naming Process</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #faf7f2;
+      --paper-2: #f2ede4;
+      --ink: #1c1917;
+      --muted: #57534e;
+      --soft: #78716c;
+      --rule: rgba(28,25,23,0.12);
+      --accent: #b5523a;
+      --accent-tint: rgba(181,82,58,0.08);
+      --link: #2563eb;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Geist", sans-serif;
+      line-height: 1.5;
+    }
+
+    main {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 48px 24px 32px;
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      color: var(--soft);
+      font: 500 12px/1 "Geist Mono", monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font: 400 40px/1.05 "Instrument Serif", serif;
+      letter-spacing: -0.02em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 12px 0 28px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .diagram-shell {
+      overflow-x: auto;
+      background: var(--paper-2);
+      border: 1px solid var(--rule);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    svg {
+      display: block;
+      min-width: 1000px;
+      height: auto;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 20px;
+    }
+
+    .card h2 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+      font-size: 16px;
+      line-height: 1.2;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--muted);
+      flex: 0 0 auto;
+    }
+
+    .dot.accent { background: var(--accent); }
+    .dot.link { background: var(--link); }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: 28px;
+      padding-top: 12px;
+      border-top: 1px solid var(--rule);
+      color: var(--soft);
+      font: 400 12px/1.4 "Geist Mono", monospace;
+    }
+
+    .node-name {
+      font-family: "Geist", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      fill: var(--ink);
+      text-anchor: middle;
+    }
+
+    .node-sub {
+      font-family: "Geist Mono", monospace;
+      font-size: 9px;
+      fill: var(--muted);
+      text-anchor: middle;
+    }
+
+    .tag {
+      font-family: "Geist Mono", monospace;
+      font-size: 8px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-anchor: middle;
+      text-transform: uppercase;
+    }
+
+    .arrow-label {
+      font-family: "Geist Mono", monospace;
+      font-size: 8px;
+      fill: var(--soft);
+      letter-spacing: 0.06em;
+      text-anchor: middle;
+    }
+
+    .callout {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 16px;
+      fill: #57534e;
+    }
+
+    @media (max-width: 760px) {
+      main { padding: 32px 16px 24px; }
+      h1 { font-size: 32px; }
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<main>
+  <p class="eyebrow">BRAND NAMING PROCESS</p>
+  <h1>Brand Naming Process</h1>
+  <p class="subtitle">후보 단어를 만들기 전에 헌법과 톤을 먼저 닫는 5단계 절차입니다. 발산은 3단계, 결정은 5단계 끝에서 일어납니다.</p>
+
+  <div class="diagram-shell">
+    <svg viewBox="0 0 1000 620" role="img" aria-labelledby="title desc">
+      <title id="title">Brand naming process</title>
+      <desc id="desc">Five-stage flow from interview to single decision, with diverge step intentionally delayed.</desc>
+      <defs>
+        <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r="0.9" fill="rgba(28,25,23,0.10)"/>
+        </pattern>
+        <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#57534e"/>
+        </marker>
+        <marker id="arrow-accent" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#b5523a"/>
+        </marker>
+        <marker id="arrow-link" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+          <polygon points="0 0, 8 3, 0 6" fill="#2563eb"/>
+        </marker>
+      </defs>
+
+      <rect width="1000" height="620" fill="#f2ede4"/>
+      <rect width="1000" height="620" fill="url(#dots)" opacity="0.55"/>
+
+      <!-- Boundary: pre-divergence (stages 1-2 lock decision criteria) -->
+      <rect x="40" y="56" width="496" height="184" rx="8" fill="rgba(181,82,58,0.05)" stroke="rgba(181,82,58,0.50)" stroke-dasharray="4,4"/>
+      <rect x="172" y="48" width="232" height="20" rx="2" fill="#f2ede4"/>
+      <text x="288" y="62" fill="#b5523a" font-family="'Geist Mono', monospace" font-size="8" letter-spacing="0.14em" text-anchor="middle">LOCK DECISION CRITERIA FIRST</text>
+
+      <!-- Arrows: 1 -> 2 -->
+      <path d="M232 132 H300" stroke="#b5523a" stroke-width="1.2" fill="none" marker-end="url(#arrow-accent)"/>
+      <rect x="240" y="116" width="52" height="16" rx="2" fill="#f2ede4"/>
+      <text x="266" y="128" class="arrow-label">CLOSE 5</text>
+
+      <!-- Arrows: 2 -> 3 -->
+      <path d="M524 132 H592" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="528" y="116" width="60" height="16" rx="2" fill="#f2ede4"/>
+      <text x="558" y="128" class="arrow-label">TONE SET</text>
+
+      <!-- Arrows: 3 -> 4 (elbow down) -->
+      <path d="M816 184 V268 H676" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="788" y="208" width="56" height="16" rx="2" fill="#f2ede4"/>
+      <text x="816" y="220" class="arrow-label">DIVERGE</text>
+
+      <!-- Arrows: 4 -> 5 -->
+      <path d="M408 312 H324" stroke="#57534e" stroke-width="1.2" fill="none" marker-end="url(#arrow)"/>
+      <rect x="332" y="296" width="68" height="16" rx="2" fill="#f2ede4"/>
+      <text x="366" y="308" class="arrow-label">COMPRESS</text>
+
+      <!-- Arrows: 5 -> Decision -->
+      <path d="M184 384 V476" stroke="#2563eb" stroke-width="1.4" fill="none" marker-end="url(#arrow-link)"/>
+      <rect x="152" y="420" width="64" height="16" rx="2" fill="#f2ede4"/>
+      <text x="184" y="432" class="arrow-label">PASS GATE</text>
+
+      <!-- Loopback: 5 -> 4 (if no candidate passes) -->
+      <path d="M324 360 H260 V268 H408" stroke="#78716c" stroke-width="1" fill="none" stroke-dasharray="5,4" marker-end="url(#arrow)"/>
+      <rect x="240" y="296" width="80" height="16" rx="2" fill="#f2ede4"/>
+      <text x="280" y="308" class="arrow-label">NO PASS LOOP</text>
+
+      <!-- Stage 1: Interview -->
+      <g>
+        <rect x="64" y="76" width="168" height="112" rx="6" fill="#f2ede4"/>
+        <rect x="64" y="76" width="168" height="112" rx="6" fill="rgba(181,82,58,0.08)" stroke="#b5523a" stroke-width="1.2"/>
+        <rect x="76" y="88" width="48" height="16" rx="2" fill="transparent" stroke="rgba(181,82,58,0.45)" stroke-width="0.8"/>
+        <text x="100" y="100" class="tag" fill="#b5523a">STAGE 1</text>
+        <text x="148" y="124" class="node-name">인터뷰: 5축 헌법</text>
+        <text x="148" y="142" class="node-sub">법적 위치 · 사업 정의</text>
+        <text x="148" y="156" class="node-sub">타겟 · POSITIVE</text>
+        <text x="148" y="170" class="node-sub">NEGATIVE</text>
+      </g>
+
+      <!-- Stage 2: Tone Calibration -->
+      <g>
+        <rect x="300" y="76" width="224" height="112" rx="6" fill="#f2ede4"/>
+        <rect x="300" y="76" width="224" height="112" rx="6" fill="rgba(181,82,58,0.08)" stroke="#b5523a" stroke-width="1.2"/>
+        <rect x="312" y="88" width="48" height="16" rx="2" fill="transparent" stroke="rgba(181,82,58,0.45)" stroke-width="0.8"/>
+        <text x="336" y="100" class="tag" fill="#b5523a">STAGE 2</text>
+        <text x="412" y="124" class="node-name">톤 캘리브레이션</text>
+        <text x="412" y="142" class="node-sub">톤 4룰 (시간 · 권위 · 언어 · 가치)</text>
+        <text x="412" y="156" class="node-sub">+ 작성자 무의식 4질문</text>
+        <text x="412" y="170" class="node-sub">자국 · 해외 · 일상어 · 금기</text>
+      </g>
+
+      <!-- Stage 3: Diverge -->
+      <g>
+        <rect x="592" y="76" width="224" height="112" rx="6" fill="#f2ede4"/>
+        <rect x="592" y="76" width="224" height="112" rx="6" fill="#fff" stroke="#1c1917"/>
+        <rect x="604" y="88" width="48" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.40)" stroke-width="0.8"/>
+        <text x="628" y="100" class="tag" fill="#57534e">STAGE 3</text>
+        <text x="704" y="124" class="node-name">후보 발산</text>
+        <text x="704" y="142" class="node-sub">의미축 2~4개 × 작명 공식</text>
+        <text x="704" y="156" class="node-sub">기능 · 인물 · 어원 · 일상 · 합성</text>
+        <text x="704" y="170" class="node-sub">목표: 15~30개 분포</text>
+      </g>
+
+      <!-- Stage 4: Compress (bottom row, right of stage 5) -->
+      <g>
+        <rect x="408" y="232" width="268" height="128" rx="6" fill="#f2ede4"/>
+        <rect x="408" y="232" width="268" height="128" rx="6" fill="#fff" stroke="#1c1917"/>
+        <rect x="420" y="244" width="48" height="16" rx="2" fill="transparent" stroke="rgba(28,25,23,0.40)" stroke-width="0.8"/>
+        <text x="444" y="256" class="tag" fill="#57534e">STAGE 4</text>
+        <text x="542" y="280" class="node-name">SMILE / SCRATCH 압축</text>
+        <text x="542" y="298" class="node-sub">SMILE: Suggestive · Memorable · Imagery · Legs · Emotional</text>
+        <text x="542" y="312" class="node-sub">SCRATCH: Spelling · Copycat · Restrictive · Annoying</text>
+        <text x="542" y="326" class="node-sub">Tame · Curse of knowledge · Hard to pronounce</text>
+        <text x="542" y="346" class="node-sub">출력: 5개 이하 단축 리스트</text>
+      </g>
+
+      <!-- Stage 5: 4-check + field test (bottom-left) -->
+      <g>
+        <rect x="56" y="232" width="268" height="152" rx="6" fill="#f2ede4"/>
+        <rect x="56" y="232" width="268" height="152" rx="6" fill="rgba(181,82,58,0.08)" stroke="#b5523a" stroke-width="1.2"/>
+        <rect x="68" y="244" width="48" height="16" rx="2" fill="transparent" stroke="rgba(181,82,58,0.45)" stroke-width="0.8"/>
+        <text x="92" y="256" class="tag" fill="#b5523a">STAGE 5</text>
+        <text x="190" y="280" class="node-name">4중 검수 + 현장 테스트</text>
+        <text x="190" y="298" class="node-sub">등기 (iros.go.kr)</text>
+        <text x="190" y="312" class="node-sub">상표 (KIPRIS)</text>
+        <text x="190" y="326" class="node-sub">도메인 · SNS 핸들</text>
+        <text x="190" y="340" class="node-sub">다국어 부정 의미</text>
+        <text x="190" y="362" class="node-sub">+ 잠재 고객 5명 현장 테스트</text>
+      </g>
+
+      <!-- Decision node (strong accent) -->
+      <g>
+        <rect x="56" y="476" width="268" height="68" rx="6" fill="#f2ede4"/>
+        <rect x="56" y="476" width="268" height="68" rx="6" fill="rgba(37,99,235,0.08)" stroke="#2563eb" stroke-width="1.4"/>
+        <rect x="68" y="488" width="64" height="16" rx="2" fill="transparent" stroke="rgba(37,99,235,0.45)" stroke-width="0.8"/>
+        <text x="100" y="500" class="tag" fill="#2563eb">DECISION</text>
+        <text x="190" y="520" class="node-name">결정 1개 + 백업 1개</text>
+        <text x="190" y="536" class="node-sub">받아 적기 + 한 달 뒤 재호명 통과</text>
+      </g>
+
+      <!-- Callout pointing at decision -->
+      <text x="440" y="500" class="callout">발산은 3단계까지 미룬다.</text>
+      <text x="440" y="522" class="callout">결정은 5명이 받아 적은 뒤에야 닫는다.</text>
+      <path d="M428 506 C400 506, 380 510, 340 514" stroke="#78716c" stroke-width="1" fill="none" stroke-dasharray="4,3"/>
+
+      <!-- Legend -->
+      <line x1="40" y1="572" x2="960" y2="572" stroke="rgba(28,25,23,0.12)" stroke-width="0.8"/>
+      <text x="48" y="592" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8" letter-spacing="0.14em">LEGEND</text>
+      <rect x="140" y="580" width="20" height="12" rx="2" fill="rgba(181,82,58,0.08)" stroke="#b5523a"/>
+      <text x="168" y="590" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">criteria stage</text>
+      <rect x="308" y="580" width="20" height="12" rx="2" fill="#fff" stroke="#1c1917"/>
+      <text x="336" y="590" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">execution stage</text>
+      <rect x="484" y="580" width="20" height="12" rx="2" fill="rgba(37,99,235,0.08)" stroke="#2563eb"/>
+      <text x="512" y="590" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">decision output</text>
+      <line x1="640" y1="586" x2="676" y2="586" stroke="#78716c" stroke-width="1" stroke-dasharray="5,4"/>
+      <text x="688" y="590" fill="#57534e" font-family="'Geist Mono', monospace" font-size="8">loopback</text>
+    </svg>
+  </div>
+
+  <section class="cards">
+    <article class="card">
+      <h2><span class="dot accent"></span>Criteria before candidates</h2>
+      <p>5축 헌법과 톤 4룰을 먼저 닫지 않으면, 어떤 좋은 단어가 나와도 결정권자가 매번 다른 잣대로 깎아내고 결정이 미뤄집니다.</p>
+    </article>
+    <article class="card">
+      <h2><span class="dot"></span>Diverge late, compress hard</h2>
+      <p>후보 발산은 3단계까지 미루고, 그다음 SMILE / SCRATCH 두 체크리스트로 5개 이하까지 단번에 줄입니다.</p>
+    </article>
+    <article class="card">
+      <h2><span class="dot link"></span>Test before commit</h2>
+      <p>등기·상표·도메인·다국어 4중 검수에 잠재 고객 5명 받아 적기 테스트까지 통과해야 도메인 결제·로고 외주를 시작합니다.</p>
+    </article>
+  </section>
+
+  <footer>solo-biz-playbook / docs/diagrams/brand-naming-process.html · 각 단계 산출물 체크리스트는 docs/brand-naming/process.md 참조</footer>
+</main>
+</body>
+</html>

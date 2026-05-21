@@ -137,10 +137,31 @@ AI 도구는 계속 바뀝니다. 업무 시스템을 특정 모델의 프롬프
 
 ## 시작하기
 
-1. [`template/lean-canvas.md`](template/lean-canvas.md)를 복사해 자기 사업의 현재 버전을 작성합니다.
-2. [`docs/principles/`](docs/principles/)에서 자기 상황에 맞는 의사결정 기준을 고릅니다.
-3. [`automation/claude-worklog/`](automation/claude-worklog/)를 참고해 프로젝트별 투입 시간 계측을 붙입니다.
-4. [`docs/agent-systems/`](docs/agent-systems/)를 참고해 AI 에이전트 운영 지식을 특정 모델 밖으로 꺼냅니다.
+신규 사용자가 차근히 따라갈 수 있는 순서입니다. 단계마다 빈 템플릿을 복사해 채워 가면 됩니다.
+
+### 1단계. 사업의 이름을 정한다: 브랜드 네이밍
+
+[`docs/brand-naming/`](docs/brand-naming/) 모듈로 후보 단어를 만들기 전에 5축 헌법과 톤 시그니처부터 닫습니다. 후보 단어를 너무 일찍 만들면 평가 기준이 매번 흔들리고 결정이 미뤄집니다.
+
+빈 양식: [`template/brand-naming-brief.md`](template/brand-naming-brief.md)
+
+### 2단계. 사업의 내용을 한 장으로 정리한다: 비즈 캔버스
+
+[`docs/strategy-design/`](docs/strategy-design/) 모듈로 린캔버스를 작성해 고객·문제·해법·수익 구조를 명문화합니다. 완성한 캔버스는 한 장 이미지로 시각화해 분기마다 전략 드리프트를 점검합니다.
+
+빈 양식: [`template/lean-canvas.md`](template/lean-canvas.md)
+
+### 3단계. 사업의 운영 시스템을 만든다: 원칙·계측·에이전트
+
+세 모듈을 묶어서 운영 시스템으로 봅니다. 어느 하나가 빠지면 다음 분기에 같은 판단을 다시 하게 됩니다.
+
+- [`docs/principles/`](docs/principles/): 시급 방어선·플랫폼 집중도·자산 사다리 같은 반복 의사결정 원칙
+- [`automation/claude-worklog/`](automation/claude-worklog/): 프로젝트별 투입 시간 자동 계측 (원칙의 실측 근거)
+- [`docs/agent-systems/`](docs/agent-systems/): Claude·Codex 같은 AI 에이전트를 모델 비종속 구조로 운영
+
+### 4단계. 매월 복기한다: Claude Monthly Review
+
+[`docs/claude-monthly-review/`](docs/claude-monthly-review/) 모듈로 Claude 구독 사용량을 매월 결제일 기준으로 집계·복기합니다. 비용·토큰·카테고리·모델 분포로 다음 달의 줄일 마찰과 유지할 고효율 패턴이 보입니다.
 
 ---
 
