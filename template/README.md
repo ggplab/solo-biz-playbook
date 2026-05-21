@@ -17,6 +17,7 @@ flowchart TD
 | 템플릿 | 위치 | 용도 |
 |---|---|---|
 | Lean Canvas | [`lean-canvas.md`](lean-canvas.md) | 고객, 문제, 해법, 수익 구조, 비용 구조, 핵심 지표를 한 장으로 정리 |
+| Brand Naming Brief | [`brand-naming-brief.md`](brand-naming-brief.md) | 브랜드·상호 결정 전 5축 헌법과 톤 시그니처를 닫는 워크시트 |
 
 ## 추천 사용법
 

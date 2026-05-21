@@ -37,6 +37,7 @@
 | 모듈 | 랜딩 페이지 | 쓰임 |
 |---|---|---|
 | **전략 설계** | [`docs/strategy-design/`](docs/strategy-design/) | 실제 사례와 빈 템플릿으로 자기 사업의 고객, 문제, 수익 구조를 정리 |
+| **브랜드 네이밍** | [`docs/brand-naming/`](docs/brand-naming/) | 후보 단어를 만들기 전에 5축 헌법과 톤 시그니처를 닫는 5단계 절차 |
 | **의사결정 원칙** | [`docs/principles/`](docs/principles/) | 시급 방어선, 플랫폼 집중도, 부의 사다리처럼 반복 판단에 쓰는 규율 |
 | **운영 계측** | [`docs/operations-telemetry/`](docs/operations-telemetry/) | AI 에이전트 세션을 캘린더·업무일지로 남겨 프로젝트별 투입 시간을 실측 |
 | **Claude Monthly Review** | [`docs/claude-monthly-review/`](docs/claude-monthly-review/) | Claude 구독 요금제 사용량을 매월 결제일 기준으로 자동 집계·복기 — 토큰·비용·카테고리·모델 분포로 다음 달 효율화 액션을 도출 |
@@ -58,6 +59,7 @@ GitHub 메인 페이지는 전체 지도입니다. Threads나 블로그에서는
 | 공유 주제 | 바로 보낼 링크 |
 |---|---|
 | 전략 설계 | [`docs/strategy-design/`](docs/strategy-design/) |
+| 브랜드 네이밍 절차 | [`docs/brand-naming/`](docs/brand-naming/) |
 | 1인 사업 운영 원칙 | [`docs/principles/`](docs/principles/) |
 | 운영 계측 | [`docs/operations-telemetry/`](docs/operations-telemetry/) |
 | Claude 구독 요금제 월간 사용 복기 | [`docs/claude-monthly-review/`](docs/claude-monthly-review/) |
