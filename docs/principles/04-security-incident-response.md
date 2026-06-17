@@ -1,4 +1,4 @@
-# 원칙 04 — 보안 사고 대응 (Supply Chain & Credential)
+# 원칙 04: 보안 사고 대응 (Supply Chain & Credential)
 
 > "공격은 1년에 한 번이라도, 대응 체계는 매일 작동한다. **검증되지 않은 '점검 도구' 실행이 가장 흔한 두 번째 침해 벡터다.**"
 
@@ -6,11 +6,11 @@
 
 ## 한 줄 정의
 
-**1인 사업자에게 보안 사고는 매출 손실보다 ID 손실이 더 치명적이다** — 한 번 유출된 GitHub OIDC 토큰, npm publish 토큰, OAuth refresh 토큰은 IP·고객 데이터·결제 자격증명까지 연쇄적으로 노출시킨다. 따라서 보안은:
+**1인 사업자에게 보안 사고는 매출 손실보다 ID 손실이 더 치명적이다**: 한 번 유출된 GitHub OIDC 토큰, npm publish 토큰, OAuth refresh 토큰은 IP·고객 데이터·결제 자격증명까지 연쇄적으로 노출시킨다. 따라서 보안은:
 
 1. **자동 감시(매일)** + **명시적 대응(사고 발생 시)** 두 트랙으로 분리한다.
 2. 사고 시 모든 행동은 **1차 소스로 검증**한 IoC 위에서만 이뤄진다.
-3. 행동의 blast radius 순서를 지킨다 — **점검 → 격리 → 정화 → 복구 → 학습**. 역순으로 가지 않는다(예: 증거 없이 토큰부터 전면 회전은 운영을 마비시킨다).
+3. 행동의 blast radius 순서를 지킨다, **점검 → 격리 → 정화 → 복구 → 학습**. 역순으로 가지 않는다(예: 증거 없이 토큰부터 전면 회전은 운영을 마비시킨다).
 
 ---
 
@@ -22,10 +22,10 @@
 |---|---|---|
 | OAuth 토큰 유출 | SRE팀이 자동 회전 | 본인이 모든 서비스 수동 재로그인 → 24h+ 다운타임 |
 | npm publish 토큰 | 보안팀 격리 + 강제 회전 | 자기 IP(강의자료·콘텐츠) 재배포 차단 |
-| Claude Code/Cursor 후킹 | EDR 탐지 | 모든 AI 워크플로 오염 가능 — 본인 인지 후 7+ 일 |
+| Claude Code/Cursor 후킹 | EDR 탐지 | 모든 AI 워크플로 오염 가능, 본인 인지 후 7+ 일 |
 | 소셜 엔지니어링 (가짜 점검 도구) | 보안 인식 교육 + 승인 절차 | **즉시 실행 충동 + 단독 의사결정** → 가장 큰 리스크 |
 
-**역사적 패턴**: Shai-Hulud (2025-09 → 2025-12 v2 → 2026-05 Mini), TeamPCP 캠페인, PyPI typosquat — npm/PyPI 공급망 공격은 **분기당 1회 이상** 대형 캠페인이 발견된다. "내 시스템엔 안 올 것"은 가정이 아니라 도박.
+**역사적 패턴**: Shai-Hulud (2025-09 → 2025-12 v2 → 2026-05 Mini), TeamPCP 캠페인, PyPI typosquat, npm/PyPI 공급망 공격은 **분기당 1회 이상** 대형 캠페인이 발견된다. "내 시스템엔 안 올 것"은 가정이 아니라 도박.
 
 ---
 
@@ -60,7 +60,7 @@
 |---|---|
 | 패키지명 + 버전 | `package.json` 의존성, `node_modules/*/package.json` |
 | 파일명 | `find ~ -name "<ioc-filename>"` (예: `router_init.js`, `setup_bun.js`) |
-| 고유 문자열 | `grep -r "<campaign-salt>"` (예: `svksjrhjkcejg`) — 단, 본인 검색 로그(`.claude/projects/*.jsonl`)에 해당 문자열이 남으므로 명시적 exclude |
+| 고유 문자열 | `grep -r "<campaign-salt>"` (예: `svksjrhjkcejg`), 단, 본인 검색 로그(`.claude/projects/*.jsonl`)에 해당 문자열이 남으므로 명시적 exclude |
 | 네트워크 (도메인/IP) | `pf` log, 방화벽, 네트워크 모니터 |
 | 외부 흔적 | GitHub 본인 계정에 알 수 없는 repo (exfil 패턴: "Sha1-Hulud: The Second Coming") |
 
@@ -104,13 +104,13 @@ NIST SP 800-61 사이클을 1인 사업자 규모로 압축. 다이어그램: [`
 
 ---
 
-## 체크리스트 — 30분 안 / 24시간 안
+## 체크리스트: 30분 안 / 24시간 안
 
 ### ⏱️ 30분 안 (Triage 종료까지)
 
 - [ ] 위협 캠페인 이름 식별 + 최소 2개 1차 소스로 교차 확인
 - [ ] 1차 소스에서 IoC 추출 (패키지 리스트 / 파일명 / 해시 / 문자열 / 네트워크)
-- [ ] **사용자(본인)에게 전달된 "점검 도구" 명령이 1차 소스에 있는지** 확인 — 없으면 실행 거부
+- [ ] **사용자(본인)에게 전달된 "점검 도구" 명령이 1차 소스에 있는지** 확인: 없으면 실행 거부
 - [ ] 글로벌 npm 패키지 (`npm ls -g`) + `<프로젝트 루트>/**/package.json` IoC 매칭
 - [ ] IoC 파일 탐색 (`find ~ -name "..."`), 고유 문자열 grep
 - [ ] GitHub 본인 계정 exfil repo 검색
@@ -121,15 +121,15 @@ NIST SP 800-61 사이클을 1인 사업자 규모로 압축. 다이어그램: [`
 - [ ] 침해 패키지 모든 인스턴스 `npm uninstall`
 - [ ] 사고 기간(공격 publish 시각 ± 24h) 동안 실행된 CI/CD 워크플로 로그 확인
 - [ ] GitHub Actions 토큰 / npm publish 토큰 회전
-- [ ] **회전 필요 토큰만** 회전 — 캠페인 IoC와 무관한 토큰(Notion/Supabase/Gemini)은 보류
+- [ ] **회전 필요 토큰만** 회전: 캠페인 IoC와 무관한 토큰(Notion/Supabase/Gemini)은 보류
 - [ ] `pull_request_target` 워크플로 점검 (Mini Shai-Hulud 진입 벡터)
 - [ ] 사고 기간 git log에서 비정상 commit 확인
-- [ ] `<프로젝트 루트>/` 1페이지 회고 — 무엇을 다르게 했어야 했나
+- [ ] `<프로젝트 루트>/` 1페이지 회고, 무엇을 다르게 했어야 했나
 - [ ] 자동 감시 IoC 리스트에 새 항목 추가 (아직 자동 fetch 안 되는 항목)
 
 ---
 
-## 참고 사례 — Mini Shai-Hulud (2026-05-11)
+## 참고 사례: Mini Shai-Hulud (2026-05-11)
 
 **타임라인**:
 - 5/11 19:20–19:26 UTC: TeamPCP가 `@tanstack/*-router` 등 42개 패키지에 84개 악성 버전 publish
@@ -144,19 +144,19 @@ NIST SP 800-61 사이클을 1인 사업자 규모로 압축. 다이어그램: [`
 - Exfiltration: Session/Oxen 메신저 E2E 업로드 망
 
 **1인 작업자 관점의 핵심 학습**:
-1. 전달받은 점검 지시에 가짜 `npx <unfamiliar>` 명령이 포함되는 패턴이 흔하다 — **P2가 작동하지 않으면 점검 행위 자체가 두 번째 침해 벡터**.
-2. 로컬 작업 디렉토리는 **자동 백업되지 않는 게 기본**(macOS의 iCloud Drive는 Desktop/Documents만 동기화, `~/Projects/` 같은 경로는 제외). 사고 발생 시 "깨끗한 commit으로 reset 가능한 백업 채널"이 필수 — 작업 디렉토리를 private repo로 즉시 백업하는 일회성 정리 작업이 사후가 아니라 사전에 끝나 있어야 한다.
+1. 전달받은 점검 지시에 가짜 `npx <unfamiliar>` 명령이 포함되는 패턴이 흔하다, **P2가 작동하지 않으면 점검 행위 자체가 두 번째 침해 벡터**.
+2. 로컬 작업 디렉토리는 **자동 백업되지 않는 게 기본**(macOS의 iCloud Drive는 Desktop/Documents만 동기화, `~/Projects/` 같은 경로는 제외). 사고 발생 시 "깨끗한 commit으로 reset 가능한 백업 채널"이 필수, 작업 디렉토리를 private repo로 즉시 백업하는 일회성 정리 작업이 사후가 아니라 사전에 끝나 있어야 한다.
 3. 단일 파일 기반 IoC 스캔(`find` + `grep`)은 home 디렉토리 전체에서 1분 이내 끝난다 → watchdog 매일 실행 비용은 매우 낮다.
 
 ---
 
-## 도구 매핑 — 이 원칙을 실제로 작동시키는 코드 (예시 구현)
+## 도구 매핑: 이 원칙을 실제로 작동시키는 코드 (예시 구현)
 
 | 도구 | 역할 | 구현 방식 |
 |---|---|---|
 | 일일 IoC 스캐너 (`supply-chain-watchdog.py` 등) | 자동 감시 (Detect) | 공용 스크립트 디렉토리에 배치, 1차 소스 IoC CSV를 매일 fetch + 로컬 `package.json` / `node_modules` 대조 |
 | 시스템 스케줄러 (launchd · cron · systemd) | 매일 정해진 시각 실행 | OS별 표준 스케줄러로 daemon 등록 |
-| 보안 사고 대응 서브에이전트 | Triage·Contain 권고 (메인 AI 컨텍스트 보호) | Claude Code subagent / Cursor agent — 도구는 read-only(Read, Bash, WebFetch, Grep)만 허용, Write 제거 |
+| 보안 사고 대응 서브에이전트 | Triage·Contain 권고 (메인 AI 컨텍스트 보호) | Claude Code subagent / Cursor agent, 도구는 read-only(Read, Bash, WebFetch, Grep)만 허용, Write 제거 |
 | 다이어그램 | 6단계 시각화 | [`../diagrams/security-incident-response.html`](../diagrams/security-incident-response.html) |
 | 알림 채널 환경변수 | Discord/Slack webhook URL + 멘션 대상 ID | 글로벌 셸 env에 secret으로 보관, 프로젝트 `.env`에 복붙 금지 |
 
@@ -172,5 +172,5 @@ NIST SP 800-61 사이클을 1인 사업자 규모로 압축. 다이어그램: [`
 
 ## 관련 원칙
 
-- [원칙 01 — 실투입 시급 방어선](01-pricing-floor.md): 사고 대응에도 동일 — "100% 가능성 없으면 큰 행동 안 한다"
-- [원칙 02 — 단일 플랫폼 매출 상한](02-platform-concentration.md): GitHub/npm 단일 의존도 위험과 통하는 분산 사고
+- [원칙 01: 실투입 시급 방어선](01-pricing-floor.md): 사고 대응에도 동일, "100% 가능성 없으면 큰 행동 안 한다"
+- [원칙 02: 단일 플랫폼 매출 상한](02-platform-concentration.md): GitHub/npm 단일 의존도 위험과 통하는 분산 사고

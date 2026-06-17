@@ -22,5 +22,5 @@ flowchart TD
 
 ## 관련 문서
 
-- [`../docs/principles/01-pricing-floor.md`](../docs/principles/01-pricing-floor.md) — 실측 시간이 필요한 이유
-- [`../docs/agent-systems/`](../docs/agent-systems/) — 자동화 로직을 모델 비종속으로 유지하는 기준
+- [`../docs/principles/01-pricing-floor.md`](../docs/principles/01-pricing-floor.md): 실측 시간이 필요한 이유
+- [`../docs/agent-systems/`](../docs/agent-systems/): 자동화 로직을 모델 비종속으로 유지하는 기준

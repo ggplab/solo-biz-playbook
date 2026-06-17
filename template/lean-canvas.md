@@ -1,5 +1,5 @@
 ---
-title: Lean Canvas 워크북 — 1인 사업자용
+title: Lean Canvas 워크북, 1인 사업자용
 version: template v1
 base: Ash Maurya, Running Lean (O'Reilly)
 ---
@@ -18,7 +18,7 @@ base: Ash Maurya, Running Lean (O'Reilly)
 
 ---
 
-## 1. Problem — 고객의 진짜 문제
+## 1. Problem: 고객의 진짜 문제
 
 고객이 겪고 있는 **상위 2~3개** 문제. 내가 해결할 수 있는 거 말고, 고객이 실제로 고통받는 것.
 
@@ -28,12 +28,12 @@ base: Ash Maurya, Running Lean (O'Reilly)
 - "이 문제만 해결되면 돈 낼 용의가 있다"고 말하는 사람을 실제로 만나봤나?
 
 **흔한 함정**
-- 🚫 **문제를 5개 이상 나열하지 말 것** — 포지셔닝이 흐려진다. 2~3개로 강제로 줄여라.
-- 🚫 **내가 팔고 싶은 솔루션 기준으로 문제를 역산하지 말 것** — "내 강의를 살 법한 문제"가 아니라 "고객이 실제로 겪는 문제"여야 한다.
+- 🚫 **문제를 5개 이상 나열하지 말 것**: 포지셔닝이 흐려진다. 2~3개로 강제로 줄여라.
+- 🚫 **내가 팔고 싶은 솔루션 기준으로 문제를 역산하지 말 것**: "내 강의를 살 법한 문제"가 아니라 "고객이 실제로 겪는 문제"여야 한다.
 
 ---
 
-## 2. Customer Segments — 고객 세그먼트
+## 2. Customer Segments: 고객 세그먼트
 
 누구의 문제인가. **Early Adopter** 를 구체적으로 묘사할수록 좋다.
 
@@ -43,27 +43,27 @@ base: Ash Maurya, Running Lean (O'Reilly)
 - Early Adopter가 "이미 하고 있는 행동" 한 가지를 꼽을 수 있나? (예: 오픈채팅에서 질문, 뉴스레터 구독, 관련 툴 유료 결제 중)
 
 **흔한 함정**
-- 🚫 **"누구나 필요합니다" 절대 금지** — 포지셔닝 실패의 확정 신호.
+- 🚫 **"누구나 필요합니다" 절대 금지**: 포지셔닝 실패의 확정 신호.
 - 🚫 B2B/B2C 동시 주력은 1인 사업자에게 거의 항상 실패. 시간이 찢어진다.
 
 ---
 
-## 3. Unique Value Proposition — 고유 가치 제안
+## 3. Unique Value Proposition: 고유 가치 제안
 
 **한 문장** 으로. 슬로건과 한 문장 정의 둘 다.
 
 **자문 질문**
 - "도구 이름"에 의존하지 않는 UVP인가? (도구는 3년 뒤에 바뀐다)
-- 한 층 위의 추상 — "**어떤 결과를 얻게 해주는가**" 로 쓸 수 있나?
+- 한 층 위의 추상: "**어떤 결과를 얻게 해주는가**" 로 쓸 수 있나?
 - 카피를 고객 입에서 나온 말 그대로 가져올 수 있나?
 
 **흔한 함정**
-- 🚫 **형용사 남발** ("효율적인·혁신적인·최고의") — 다 빼고 명사 동사로만.
+- 🚫 **형용사 남발** ("효율적인·혁신적인·최고의"): 다 빼고 명사 동사로만.
 - 🚫 내 관점이 아니라 **고객 관점** 의 결과 서술이어야 한다.
 
 ---
 
-## 4. Solution — 해결책
+## 4. Solution: 해결책
 
 문제당 **상위 3가지** 해결 기능/상품. 초기엔 MVP 수준으로.
 
@@ -77,7 +77,7 @@ base: Ash Maurya, Running Lean (O'Reilly)
 
 ---
 
-## 5. Channels — 채널 (발견·관계·전환)
+## 5. Channels: 채널 (발견·관계·전환)
 
 고객에게 도달하는 경로. TOP(발견) / MID(관계) / BOTTOM(전환) 세 층이 다 있어야 안정적.
 
@@ -87,12 +87,12 @@ base: Ash Maurya, Running Lean (O'Reilly)
 - 유기적(발견)/관계형(뉴스레터)/판매(플랫폼) 중 **내 강점 채널** 은?
 
 **흔한 함정**
-- 🚫 플랫폼 한두 개에 올인 — 알고리즘 바뀌면 끝.
-- 🚫 TOP만 있고 MID 없는 구조 — 신규 유입이 전환까지 못 간다.
+- 🚫 플랫폼 한두 개에 올인: 알고리즘 바뀌면 끝.
+- 🚫 TOP만 있고 MID 없는 구조: 신규 유입이 전환까지 못 간다.
 
 ---
 
-## 6. Revenue Streams — 수익 흐름
+## 6. Revenue Streams: 수익 흐름
 
 가격 모델 + 수익 구조. **절대값보다 비중으로** 관리하는 것을 권장.
 
@@ -102,12 +102,12 @@ base: Ash Maurya, Running Lean (O'Reilly)
 - 단일 수익원이 총 매출의 **40% 초과** 하지 않나?
 
 **흔한 함정**
-- 🚫 **절대 매출 목표만** 잡기 — 비중 관리가 없으면 구조가 안 바뀐다.
-- 🚫 "시간교환형(멘토링)"을 평생 메인으로 가져가려는 계획 — 번아웃 + 사다리 상단 진입 실패.
+- 🚫 **절대 매출 목표만** 잡기: 비중 관리가 없으면 구조가 안 바뀐다.
+- 🚫 "시간교환형(멘토링)"을 평생 메인으로 가져가려는 계획: 번아웃 + 사다리 상단 진입 실패.
 
 ---
 
-## 7. Cost Structure — 비용 구조
+## 7. Cost Structure: 비용 구조
 
 **월 고정비 총액** + 생활비 / 사업고정비 분리.
 
@@ -117,12 +117,12 @@ base: Ash Maurya, Running Lean (O'Reilly)
 - "최소 모드 (예: 24h/월 수입활동)" 가 실제로 실행 가능한가? → 비상금 없으면 불가.
 
 **흔한 함정**
-- 🚫 **매출만 보고 "벌었다"고 착각** — 고정비 × 6이 비상금 상한, 거기 도달 전엔 실질 여유 없음.
+- 🚫 **매출만 보고 "벌었다"고 착각**: 고정비 × 6이 비상금 상한, 거기 도달 전엔 실질 여유 없음.
 - 🚫 사업 고정비를 줄이려다 **도구·외주** 를 끊어서 스스로 병목 되기.
 
 ---
 
-## 8. Key Metrics — 핵심 지표 (TOP 3~5)
+## 8. Key Metrics: 핵심 지표 (TOP 3~5)
 
 많지 않게. **왜 이 지표인지** 를 문서에 박아야 포기가 줄어든다.
 
@@ -132,27 +132,27 @@ base: Ash Maurya, Running Lean (O'Reilly)
 - 이 지표가 월말에 빨간불 뜨면 **무엇을** 할 건가?
 
 **흔한 함정**
-- 🚫 **10개 넘는 KPI** — 아무도 안 본다.
+- 🚫 **10개 넘는 KPI**: 아무도 안 본다.
 - 🚫 단 하나도 **행동과 연결** 안 되면 다시 써라.
 
 ---
 
-## 9. Unfair Advantage — 불공정 우위
+## 9. Unfair Advantage: 불공정 우위
 
 남이 따라 하려면 **몇 년 걸리는** 것.
 
 **자문 질문**
 - 자산 후보를 20개 쓰고 그중 "3개월 안에 카피 불가능한 것" 만 체크하면 몇 개 남나?
-- 돈/팔로워/인증서는 Unfair Advantage가 아닐 수도 있다 — 살 수 있는 건 카피 가능.
+- 돈/팔로워/인증서는 Unfair Advantage가 아닐 수도 있다: 살 수 있는 건 카피 가능.
 - **조합** 으로만 Unfair인 것이 있나? (예: 데이터 분석 + AI 자동화 + 교육 전달력의 교차점)
 
 **흔한 함정**
-- 🚫 "내가 잘하는 것" 을 적음 — 그건 **strength** 이지 unfair advantage가 아니다.
-- 🚫 비어 있으면 **채우지 말고 비워두기** — 시간과 레퍼런스가 쌓이며 채워진다.
+- 🚫 "내가 잘하는 것" 을 적음: 그건 **strength** 이지 unfair advantage가 아니다.
+- 🚫 비어 있으면 **채우지 말고 비워두기**: 시간과 레퍼런스가 쌓이며 채워진다.
 
 ---
 
-## 체크리스트 — v1 확정 전에
+## 체크리스트: v1 확정 전에
 
 - [ ] Problem 2~3개로 줄였다
 - [ ] Customer Segments에 Early Adopter 프로필이 한 사람으로 묘사돼 있다
@@ -168,7 +168,7 @@ base: Ash Maurya, Running Lean (O'Reilly)
 
 ---
 
-## 시각화 (선택) — 한 장짜리로 만들기
+## 시각화 (선택): 한 장짜리로 만들기
 
 텍스트 v1이 확정되면 **한 장 이미지**로 변환하세요. 매주 훑어보며 전략 드리프트를 감지하는 데 유용합니다.
 
@@ -188,10 +188,10 @@ Claude Code 세션에서:
 → 인라인 SVG HTML 파일 한 장 출력. 텍스트로 편집 가능, 브라우저에서 PNG 내보내기 쉬움.
 
 ### 대안 도구
-- **Notion** — 텍스트 SSOT + 분기 말 PNG 내보내기 조합 (저자의 실제 운영 방식)
-- **Excalidraw** — 손그림 톤, 공유 링크 바로 생성
-- **Figma** — 협업 피드백 많이 받을 때
-- **[leanstack.com](https://leanstack.com/lean-canvas)** — 공식 Ash Maurya 양식
+- **Notion**: 텍스트 SSOT + 분기 말 PNG 내보내기 조합 (저자의 실제 운영 방식)
+- **Excalidraw**: 손그림 톤, 공유 링크 바로 생성
+- **Figma**: 협업 피드백 많이 받을 때
+- **[leanstack.com](https://leanstack.com/lean-canvas)**: 공식 Ash Maurya 양식
 
 ### 민감정보 주의
 
@@ -204,6 +204,6 @@ Claude Code 세션에서:
 
 ## 참고 원칙
 
-- [`01-pricing-floor.md`](../docs/principles/01-pricing-floor.md) — 실투입 시급 방어선
-- [`02-platform-concentration.md`](../docs/principles/02-platform-concentration.md) — 단일 플랫폼 매출 상한
-- [`03-wealth-ladder.md`](../docs/principles/03-wealth-ladder.md) — Nathan Barry 부의 사다리 4단
+- [`01-pricing-floor.md`](../docs/principles/01-pricing-floor.md): 실투입 시급 방어선
+- [`02-platform-concentration.md`](../docs/principles/02-platform-concentration.md): 단일 플랫폼 매출 상한
+- [`03-wealth-ladder.md`](../docs/principles/03-wealth-ladder.md): Nathan Barry 부의 사다리 4단

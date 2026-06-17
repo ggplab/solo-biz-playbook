@@ -1,4 +1,4 @@
-# 원칙 03 — 부의 사다리 4단 매핑
+# 원칙 03: 부의 사다리 4단 매핑
 
 > "시간을 팔 것인가, 결과물을 팔 것인가, 시스템을 팔 것인가. **같은 1시간에 무엇이 남느냐**가 사업 모델의 본질이다."
 
@@ -38,7 +38,7 @@ Based on: Nathan Barry, "Ladders of Wealth Creation"
 
 ## 각 단계의 특성
 
-### 🪜 1단 — 시간교환 (Trading Time)
+### 🪜 1단: 시간교환 (Trading Time)
 
 - **예시**: 1:1 멘토링, 컨설팅, 자문, 개인 과외
 - **장점**: 즉각 현금, 고객 신호 직접 수집, 복잡한 제작 불필요
@@ -46,7 +46,7 @@ Based on: Nathan Barry, "Ladders of Wealth Creation"
 - **적정 비중**: 초기 40~60%, 3년차 5~15%로 감축 목표
 - **전략 포인트**: **소재 발굴 채널**로 활용. 반복 질문 = 상위 단계 상품 아이디어.
 
-### 🪜 2단 — 서비스 (Providing a Service)
+### 🪜 2단: 서비스 (Providing a Service)
 
 - **예시**: 기업 강의, VOD 제작 수주, 프로젝트 용역
 - **장점**: 1단보다 단가 높음, 레퍼런스 축적, 전문성 증명
@@ -54,7 +54,7 @@ Based on: Nathan Barry, "Ladders of Wealth Creation"
 - **적정 비중**: 현재 주력(~90%) → 3년차 35~45%로 조정
 - **전략 포인트**: **자산(3단)의 원재료 수집소**. 계약서에 IP 이중활용 조항 필수.
 
-### 🏗️ 3단 — 자산 (Building Assets)
+### 🏗️ 3단: 자산 (Building Assets)
 
 - **예시**: 온라인 강의, 저서, 유료 템플릿·스타터킷, 유료 전자책, 앱
 - **장점**: 한 번 만들면 반복 수입, 시간 독립성, 브랜드 자산화
@@ -62,7 +62,7 @@ Based on: Nathan Barry, "Ladders of Wealth Creation"
 - **적정 비중**: 1년 25% → 2년 40% → 3년 55% 로드맵
 - **전략 포인트**: **2단에서 만든 교안·예제·사례**를 자산화. 백지에서 시작 금지.
 
-### ⚙️ 4단 — 시스템 (Owning Systems)
+### ⚙️ 4단: 시스템 (Owning Systems)
 
 - **예시**: 유료 커뮤니티, 구독 멤버십, SaaS, 유료 플랫폼
 - **장점**: 복리 수익, 운영 레버리지, 네트워크 효과
@@ -127,7 +127,7 @@ Based on: Nathan Barry, "Ladders of Wealth Creation"
 
 ## 연결 자료
 
-- [`01-pricing-floor.md`](01-pricing-floor.md) — 1단(시간교환) 상품의 방어선. 낮은 시급 1단이 비중 잠식 주범.
-- [`02-platform-concentration.md`](02-platform-concentration.md) — 3단 자산을 여러 플랫폼에 분산해야 집중도 리스크 해소.
-- Nathan Barry, "Ladders of Wealth Creation" — 원저: https://nathanbarry.com/wealth-creation/
-- Derek Sivers — "How to make a living from music" (예술가 사다리 유사 프레임)
+- [`01-pricing-floor.md`](01-pricing-floor.md): 1단(시간교환) 상품의 방어선. 낮은 시급 1단이 비중 잠식 주범.
+- [`02-platform-concentration.md`](02-platform-concentration.md): 3단 자산을 여러 플랫폼에 분산해야 집중도 리스크 해소.
+- Nathan Barry, "Ladders of Wealth Creation": 원저: https://nathanbarry.com/wealth-creation/
+- Derek Sivers: "How to make a living from music" (예술가 사다리 유사 프레임)

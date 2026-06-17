@@ -4,7 +4,7 @@
 
 루트 README는 전체 지도이고, 이 디렉토리는 "실제로 어떻게 생겼는지"를 보여주는 공유용 진입점입니다. Threads나 블로그 글에서는 저장소 메인보다 아래 항목 중 하나를 직접 링크하는 편이 찾기 쉽습니다.
 
-![지지플랩 린캔버스 — 공개판](my-canvas.png)
+![지지플랩 린캔버스, 공개판](my-canvas.png)
 
 ```mermaid
 flowchart LR
@@ -29,9 +29,9 @@ flowchart LR
 
 핵심 파일:
 
-- [`my-canvas.md`](my-canvas.md) — 실제로 채운 린캔버스
-- [`my-canvas.png`](my-canvas.png) — 공개 가능한 이미지 버전
-- [`../template/lean-canvas.md`](../template/lean-canvas.md) — 독자가 복사해 쓰는 빈 템플릿
+- [`my-canvas.md`](my-canvas.md): 실제로 채운 린캔버스
+- [`my-canvas.png`](my-canvas.png): 공개 가능한 이미지 버전
+- [`../template/lean-canvas.md`](../template/lean-canvas.md): 독자가 복사해 쓰는 빈 템플릿
 
 ## Claude Monthly Review
 

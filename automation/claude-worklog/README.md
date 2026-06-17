@@ -1,4 +1,4 @@
-# Claude Worklog — 세션이 끝나면 자동으로 캘린더·업무일지에 꽂히는 시스템
+# Claude Worklog: 세션이 끝나면 자동으로 캘린더·업무일지에 꽂히는 시스템
 
 > Claude Code / Codex 세션을 끝낼 때마다 **Google 캘린더에 "내가 한 작업" 이벤트가 자동으로 생기고**, 같은 내용이 Obsidian 업무일지에도 기록되는 개인 계측(self-telemetry) 시스템입니다. Stop hook 하나로 돌아갑니다. 전체 흐름은 아래 [데이터 흐름](#데이터-흐름) 섹션 참조.
 
@@ -18,9 +18,9 @@
 
 **세션 종료 시점에 자동으로:**
 
-1. 세션 `.jsonl`에서 정량 지표 추출 — 활성 시간, 메시지 수, 사용 툴, 토큰/비용, 커밋 수·라인 변화
-2. Google 캘린더 `Worklog(auto)` 에 이벤트 upsert — `[프로젝트] Gemini가 지은 8~20자 한국어 제목`
-3. Obsidian `업무일지/YYYY-MM-DD.md` 의 auto 섹션 갱신 — 같은 날 여러 세션이 시간순 합산
+1. 세션 `.jsonl`에서 정량 지표 추출, 활성 시간, 메시지 수, 사용 툴, 토큰/비용, 커밋 수·라인 변화
+2. Google 캘린더 `Worklog(auto)` 에 이벤트 upsert, `[프로젝트] Gemini가 지은 8~20자 한국어 제목`
+3. Obsidian `업무일지/YYYY-MM-DD.md` 의 auto 섹션 갱신, 같은 날 여러 세션이 시간순 합산
 
 **Idempotent·머지 가능:**
 
@@ -79,7 +79,7 @@ automation/claude-worklog/
 | `session_metrics.py` | 세션 `.jsonl` → `{duration, msg_count, tool_counts, token_usage, git_changes, ...}` | `git` CLI |
 | `worklog_calendar.py` | 지표 → 캘린더 이벤트 body. `extendedProperties.private.claude_session_id` 로 idempotent upsert. 같은 프로젝트 30분 이내 이벤트는 머지. `WORKLOG_USE_GEMINI=1` 이면 Gemini로 제목 생성. | `gws` CLI, `GEMINI_API_KEY` (옵션) |
 | `write_worklog.py` | 그날 모든 세션 → Obsidian `업무일지/{date}.md` AUTO 섹션. Gemini로 narrative 요약. 수동 메모는 보존. | `GEMINI_API_KEY` (옵션), Obsidian vault 경로 |
-| `worklog_markers.py` | `<!-- AUTO:START --> ~ <!-- AUTO:END -->` 사이만 갈아끼우는 round-trip 유틸 | — |
+| `worklog_markers.py` | `<!-- AUTO:START --> ~ <!-- AUTO:END -->` 사이만 갈아끼우는 round-trip 유틸 | - |
 
 ---
 
@@ -89,14 +89,14 @@ automation/claude-worklog/
 
 - **Claude Code** (Stop hook 지원하는 최신 버전)
 - **Python 3.11+**
-- **`git` CLI** — 커밋 수·라인 변화 계산용
-- **`jq`** — Stop hook payload에서 `session_id` 뽑을 때 사용 (`brew install jq`)
-- **`gws` (Google Workspace CLI)** — 캘린더 upsert에 사용
+- **`git` CLI**: 커밋 수·라인 변화 계산용
+- **`jq`**: Stop hook payload에서 `session_id` 뽑을 때 사용 (`brew install jq`)
+- **`gws` (Google Workspace CLI)**: 캘린더 upsert에 사용
   - 설치 방식은 `gws` 문서 참조. 본인은 `npm -g @google/google-workspace-cli` 계열 바이너리 사용 중
   - 최초 OAuth 인증 1회 필요 (`gws auth login`)
-- **Google 캘린더 1개** — `Worklog(auto)` 같은 이름으로 새로 만드는 것 추천
-- **(옵션) Obsidian vault** — 업무일지 자동화 원할 때만
-- **(옵션) Gemini API 키** — 제목 / narrative 자동 생성 원할 때만
+- **Google 캘린더 1개**: `Worklog(auto)` 같은 이름으로 새로 만드는 것 추천
+- **(옵션) Obsidian vault**: 업무일지 자동화 원할 때만
+- **(옵션) Gemini API 키**: 제목 / narrative 자동 생성 원할 때만
 
 ### 1. 클론 & 디렉토리 확인
 
@@ -166,7 +166,7 @@ PROJECT_COLOR = {
 }
 ```
 
-### 6. 첫 실행 — 최근 7일치 백필로 동작 검증
+### 6. 첫 실행: 최근 7일치 백필로 동작 검증
 
 ```bash
 cd automation/claude-worklog
@@ -207,30 +207,30 @@ python3 scripts/worklog_calendar.py --backfill 30 --existing-only
 
 ## 커스터마이즈 포인트
 
-- **캘린더 이벤트 제목 규칙** — `worklog_calendar.py` 의 `_gemini_title()` 프롬프트 수정
-- **skip 기준** — `MIN_DURATION_SEC`, `MIN_MSG_FALLBACK` 상수 (기본: 5분 미만 + 메시지 3개 미만 + 커밋 0)
-- **머지 윈도** — `MERGE_GAP_SEC` 상수 (기본 30분)
-- **업무일지 narrative 프롬프트** — `write_worklog.py` 의 Gemini 호출부
-- **캘린더 대신 다른 도구에 넣기** — `worklog_calendar.py` 의 `_gws()` 함수만 Notion/ClickUp/TickTick API로 갈아끼우면 됩니다. 지표 추출은 `session_metrics.py` 가 이미 분리돼 있어요.
+- **캘린더 이벤트 제목 규칙**: `worklog_calendar.py` 의 `_gemini_title()` 프롬프트 수정
+- **skip 기준**: `MIN_DURATION_SEC`, `MIN_MSG_FALLBACK` 상수 (기본: 5분 미만 + 메시지 3개 미만 + 커밋 0)
+- **머지 윈도**: `MERGE_GAP_SEC` 상수 (기본 30분)
+- **업무일지 narrative 프롬프트**: `write_worklog.py` 의 Gemini 호출부
+- **캘린더 대신 다른 도구에 넣기**: `worklog_calendar.py` 의 `_gws()` 함수만 Notion/ClickUp/TickTick API로 갈아끼우면 됩니다. 지표 추출은 `session_metrics.py` 가 이미 분리돼 있어요.
 
 ---
 
 ## 한계·주의
 
-- **`gws` CLI 의존** — Google OAuth를 직접 붙이고 싶으면 `_gws()` 를 `google-api-python-client` 로 교체해야 합니다
-- **Codex 세션 지원은 경로만 추가한 수준** — `~/.codex/sessions/**/*.jsonl` 을 읽지만, Claude Code 포맷과 완전 동일하진 않아서 일부 지표가 비어있을 수 있습니다
-- **Gemini 2.5 Flash는 thinking이 기본 ON** — 짧은 응답을 받으려면 `generationConfig.thinkingConfig.thinkingBudget=0` 을 반드시 명시 (현재 코드엔 들어있음). 끄지 않으면 `maxOutputTokens` 대부분이 thinking에 소비돼 `parts` 가 비어 응답 파싱이 실패합니다
+- **`gws` CLI 의존**: Google OAuth를 직접 붙이고 싶으면 `_gws()` 를 `google-api-python-client` 로 교체해야 합니다
+- **Codex 세션 지원은 경로만 추가한 수준**: `~/.codex/sessions/**/*.jsonl` 을 읽지만, Claude Code 포맷과 완전 동일하진 않아서 일부 지표가 비어있을 수 있습니다
+- **Gemini 2.5 Flash는 thinking이 기본 ON**: 짧은 응답을 받으려면 `generationConfig.thinkingConfig.thinkingBudget=0` 을 반드시 명시 (현재 코드엔 들어있음). 끄지 않으면 `maxOutputTokens` 대부분이 thinking에 소비돼 `parts` 가 비어 응답 파싱이 실패합니다
 - **`extendedProperties.private.claude_session_id`** 를 키로 쓰기 때문에, 같은 세션 ID를 공유하는 다른 캘린더 이벤트가 있으면 꼬일 수 있습니다 (현실적으로 충돌 확률 0)
 
 ---
 
-## 왜 이 구조인가 — 설계 노트
+## 왜 이 구조인가: 설계 노트
 
-- **지표 추출과 출력부 분리** (`session_metrics.py` vs `worklog_calendar.py` / `write_worklog.py`) — 캘린더·업무일지가 같은 숫자를 봐야 나중에 KPI 대시보드 붙일 때 헷갈리지 않습니다
-- **마커 기반 round-trip** (`worklog_markers.py`) — 자동화가 수동 메모를 덮지 않도록. 업무일지에 내가 추가 코멘트를 달아도 다음 hook 실행에 살아남습니다
-- **idempotent upsert** — Stop hook은 같은 세션에 대해 여러 번 호출될 수 있습니다 (세션 재개 등). `session_id` 를 외부 키로 써서 upsert 의미론을 유지
-- **짧은 세션 skip** — 5분짜리 "디렉토리 확인" 같은 throwaway가 캘린더를 덮지 않도록. 커밋이나 대화량이 있으면 예외적으로 기록
-- **Gemini 제목은 신규 생성시에만** — 머지·재동기화 때마다 호출하면 제목이 계속 흔들리고 비용도 늘어납니다. `--retitle` 플래그로 명시할 때만 재생성
+- **지표 추출과 출력부 분리** (`session_metrics.py` vs `worklog_calendar.py` / `write_worklog.py`), 캘린더·업무일지가 같은 숫자를 봐야 나중에 KPI 대시보드 붙일 때 헷갈리지 않습니다
+- **마커 기반 round-trip** (`worklog_markers.py`), 자동화가 수동 메모를 덮지 않도록. 업무일지에 내가 추가 코멘트를 달아도 다음 hook 실행에 살아남습니다
+- **idempotent upsert**: Stop hook은 같은 세션에 대해 여러 번 호출될 수 있습니다 (세션 재개 등). `session_id` 를 외부 키로 써서 upsert 의미론을 유지
+- **짧은 세션 skip**: 5분짜리 "디렉토리 확인" 같은 throwaway가 캘린더를 덮지 않도록. 커밋이나 대화량이 있으면 예외적으로 기록
+- **Gemini 제목은 신규 생성시에만**: 머지·재동기화 때마다 호출하면 제목이 계속 흔들리고 비용도 늘어납니다. `--retitle` 플래그로 명시할 때만 재생성
 
 ---
 

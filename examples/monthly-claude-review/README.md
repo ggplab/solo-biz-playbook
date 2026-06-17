@@ -1,10 +1,10 @@
-# Monthly Claude Review — 1인 사업자의 Claude 구독 요금제 사용 복기
+# Monthly Claude Review: 1인 사업자의 Claude 구독 요금제 사용 복기
 
 > **목적**: Claude 유료 구독 요금제를 쓰는 1인 사업자가 _내가 한 달 동안 Claude를 어디에 어떻게 썼는지_ 정량·정성으로 복기하기 위한 워크플로우와 보고서 템플릿.
 
 자기 사업의 _시간 회계_가 워크로그라면, 이 모듈은 _Claude Monthly Review_다. 결제일(매월 2일) 기준으로 직전 한 달을 돌아본다.
 
-![Chart 04 — 업무 카테고리 funnel](../../docs/diagrams/04-category-funnel.png)
+![Chart 04, 업무 카테고리 funnel](../../docs/diagrams/04-category-funnel.png)
 
 
 ---
@@ -19,17 +19,17 @@
 
 ## 사용 방법
 
-1. **`/insights` 실행** (Claude Code 빌트인) — 빌트인 자체 분석 결과를 받는다.
-2. **JSONL 집계 스크립트** — `~/.claude/projects/` 의 모든 세션 transcript를 KST 기준 월간 윈도우로 집계해 CSV/JSON 산출.
-3. **모델별 가격 적용** — Anthropic 표시 단가 환산해 USD 비용 추정 (구독 ROI 계산).
-4. **보고서 작성** — 정량 + 정성 + 인사이트 + 다음 달 액션 5단으로 구성.
-5. **자동화** — 매월 2일 09시 launchd가 ①~③을 자동 실행, Discord 알림으로 보고서 작성을 트리거.
+1. **`/insights` 실행** (Claude Code 빌트인), 빌트인 자체 분석 결과를 받는다.
+2. **JSONL 집계 스크립트**: `~/.claude/projects/` 의 모든 세션 transcript를 KST 기준 월간 윈도우로 집계해 CSV/JSON 산출.
+3. **모델별 가격 적용**: Anthropic 표시 단가 환산해 USD 비용 추정 (구독 ROI 계산).
+4. **보고서 작성**: 정량 + 정성 + 인사이트 + 다음 달 액션 5단으로 구성.
+5. **자동화**: 매월 2일 09시 launchd가 ①~③을 자동 실행, Discord 알림으로 보고서 작성을 트리거.
 
 ---
 
 ## 산출물 예시
 
-- [`2026-04-anonymized.md`](2026-04-anonymized.md) — 첫 달 (2026-04-02 ~ 2026-05-01) 익명화 보고서.
+- [`2026-04-anonymized.md`](2026-04-anonymized.md): 첫 달 (2026-04-02 ~ 2026-05-01) 익명화 보고서.
 - 이 폴더의 모든 보고서는 프로젝트명·고객명·금액 등 식별 정보를 마스킹한 _공개 가능 버전_이다. 원본은 별도 비공개 저장소에서 관리한다.
 
 ---
@@ -70,8 +70,8 @@
 | `total_tokens` | input + output + cache_creation + cache_read |
 | `active_minutes` | 세션 내 인접 메시지 gap ≤ 5분 구간만 합산 (5분 초과는 idle 처리) |
 | `cost_usd` | 모델별 토큰 × Anthropic 표시 단가 (cache 5m TTL = 1.25× input 가정) |
-| `subscription_roi` | `api_equivalent_cost_usd / monthly_subscription_fee_usd` — 구독료 대비 실제 사용 가치 배수 |
-| `weighted_per_M` | `total_cost_usd / (total_tokens / 1M)` — 가중평균 단가 |
+| `subscription_roi` | `api_equivalent_cost_usd / monthly_subscription_fee_usd`, 구독료 대비 실제 사용 가치 배수 |
+| `weighted_per_M` | `total_cost_usd / (total_tokens / 1M)`, 가중평균 단가 |
 
 ---
 
@@ -104,5 +104,5 @@ flowchart TD
 ## 라이선스 / 익명화 원칙
 
 - 보고서에 등장하는 프로젝트명·고객명·계약 조건·드라이브 ID 등은 모두 일반화 또는 마스킹.
-- 토큰 수·시간·비용 같은 _구조적 수치_는 그대로 공개 — 1인 사업자 동료가 자기 수치와 비교할 수 있는 베이스라인이 되도록.
+- 토큰 수·시간·비용 같은 _구조적 수치_는 그대로 공개: 1인 사업자 동료가 자기 수치와 비교할 수 있는 베이스라인이 되도록.
 - 본인 신상이 추정되는 단서(특정 출판사·강의 플랫폼명)는 "출판사 A", "강의 플랫폼 B" 식으로 일반화.
