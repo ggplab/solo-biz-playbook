@@ -23,10 +23,10 @@
 
 v2에서 영어 번역본을 계획 중입니다. 기여하고 싶으시면 먼저 Discussions에 의사를 남겨주세요.
 
-## 코드·자동화는 없습니다
+## 자동화는 공개 안전 범위에서만
 
-이 레포는 문서 전용입니다. 스크립트·빌드·CI 없음. 오타·링크 깨짐 수정 PR 환영.
+이 레포는 문서 중심입니다. 다만 [`automation/`](automation/)에 운영 계측 예시(워크로그 Stop hook)가, [`scripts/`](scripts/)에 공개 안전 점검 스크립트가 들어 있습니다. 빌드·배포 파이프라인은 없습니다. 오타·링크 깨짐 수정 PR 환영.
 
 ## 질문·토론
 
-구체 PR이 아니라 질문이라면 [Discussions](../../discussions) 를 사용해주세요.
+구체 PR이 아니라 질문이라면 [Discussions](https://github.com/ggplab/solo-biz-playbook/discussions) 를 사용해주세요.

@@ -7,7 +7,9 @@
 ```mermaid
 flowchart TD
   A[Docs] --> B[strategy-design]
+  A --> H[brand-naming]
   A --> C[principles]
+  A --> I[office-hours]
   A --> D[operations-telemetry]
   A --> E[claude-monthly-review]
   A --> F[agent-systems]
@@ -19,7 +21,9 @@ flowchart TD
 | 문서 묶음 | 위치 | 쓰임 |
 |---|---|---|
 | 전략 설계 | [`strategy-design/`](strategy-design/) | 린캔버스 사례와 템플릿을 연결해 사업 가설을 정리 |
+| 브랜드 네이밍 | [`brand-naming/`](brand-naming/) | 후보 단어를 만들기 전에 5축 헌법과 톤 시그니처를 닫는 5단계 절차 |
 | 운영 원칙 | [`principles/`](principles/) | 가격, 플랫폼 의존도, 자산화 여부처럼 반복 판단에 쓰는 기준 |
+| Office Hours | [`office-hours/`](office-hours/) | 사업 결정 전에 강제 질문으로 전제를 검증하는 자가 멘토링 절차 |
 | 운영 계측 | [`operations-telemetry/`](operations-telemetry/) | AI 에이전트 세션을 캘린더·업무일지로 남기는 시간 회계 구조 |
 | Claude Monthly Review | [`claude-monthly-review/`](claude-monthly-review/) | 정액제 AI 도구 사용량을 월간 단위로 복기하는 공개 사례 |
 | 에이전트 운영 | [`agent-systems/`](agent-systems/) | Claude, Codex 등 특정 모델에 종속되지 않는 공용 문서·스크립트·어댑터 구조 |

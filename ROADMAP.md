@@ -1,18 +1,20 @@
 # Roadmap
 
-v1(린캔버스 + 3개 원칙)의 독자 반응을 보고 단계적으로 확장합니다. 목표 달성 후 각 항목을 체크하고 링크를 연결합니다.
+v1의 독자 반응을 보고 단계적으로 확장합니다. 목표 달성 후 각 항목을 체크하고 링크를 연결합니다.
+
+> **버전 이력**: v1은 린캔버스 + 의사결정 원칙 3개(시급 방어선·플랫폼 집중도·부의 사다리)로 출발했고, 이후 **보안 사고 대응(04)** 원칙과 **브랜드 네이밍**·**Office Hours** 모듈이 더해져 현재 원칙 4개 + 모듈 7개 구성입니다.
 
 ## v1.1 — 원칙 실전 양식 (예정 · 반응 보고 착수)
 
 독자가 원칙을 **바로 써먹을 수 있게** 하는 실전 템플릿 번들.
 
-- [ ] `templates/inquiry-screening.md` — 수락/거절 스크리닝 워크시트
+- [ ] `template/inquiry-screening.md` — 수락/거절 스크리닝 워크시트
   실투입 시간 추정 테이블 + 시급 방어선 체크 + 결정 트리. [원칙 01](docs/principles/01-pricing-floor.md) 의 실전판.
-- [ ] `templates/contract-ip-clauses.md` — B2B 계약 IP 이중활용 조항 체크리스트 (10개 조항 + 협상 스크립트). [원칙 03](docs/principles/03-wealth-ladder.md) 의 2→3단 이동 장치.
-- [ ] `templates/emails/decline-low-rate.md` — 단가 미달 거절 이메일 (3문장 템플릿)
-- [ ] `templates/emails/renegotiate-rate.md` — 단가 재협상 이메일
-- [ ] `templates/emails/accept-confirmation.md` — 수락 확정 이메일
-- [ ] `templates/quarterly-review-agenda.md` — 분기 자기 회고 아젠다
+- [ ] `template/contract-ip-clauses.md` — B2B 계약 IP 이중활용 조항 체크리스트 (10개 조항 + 협상 스크립트). [원칙 03](docs/principles/03-wealth-ladder.md) 의 2→3단 이동 장치.
+- [ ] `template/emails/decline-low-rate.md` — 단가 미달 거절 이메일 (3문장 템플릿)
+- [ ] `template/emails/renegotiate-rate.md` — 단가 재협상 이메일
+- [ ] `template/emails/accept-confirmation.md` — 수락 확정 이메일
+- [ ] `template/quarterly-review-agenda.md` — 분기 자기 회고 아젠다
 
 ## v1.2 — 운영 로그 (예정)
 

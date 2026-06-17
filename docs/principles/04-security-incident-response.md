@@ -83,6 +83,8 @@
 
 두 트랙을 섞지 않는다. 자동 트랙에 AI를 끼우면 토큰 비용·환각 위험, 명시 트랙을 cron화하면 사고 인지 지연.
 
+> 📌 이 문서에 나오는 `supply-chain-watchdog.py`, `security-incident-responder` 서브에이전트는 **저자의 로컬 작업 환경 구성 예시**이며, 이 공개 저장소에는 포함돼 있지 않습니다. 핵심은 특정 스크립트가 아니라 **두 트랙으로 나누는 설계와 6단계 대응 프로세스**입니다. 도구 이름은 각자 환경(별도 스크립트·cron·서브에이전트)으로 대체해 읽으세요.
+
 ---
 
 ## 대응 프로세스 (6단계)
@@ -109,7 +111,7 @@ NIST SP 800-61 사이클을 1인 사업자 규모로 압축. 다이어그램: [`
 - [ ] 위협 캠페인 이름 식별 + 최소 2개 1차 소스로 교차 확인
 - [ ] 1차 소스에서 IoC 추출 (패키지 리스트 / 파일명 / 해시 / 문자열 / 네트워크)
 - [ ] **사용자(본인)에게 전달된 "점검 도구" 명령이 1차 소스에 있는지** 확인 — 없으면 실행 거부
-- [ ] 글로벌 npm 패키지 (`npm ls -g`) + `~/Projects/**/package.json` IoC 매칭
+- [ ] 글로벌 npm 패키지 (`npm ls -g`) + `<프로젝트 루트>/**/package.json` IoC 매칭
 - [ ] IoC 파일 탐색 (`find ~ -name "..."`), 고유 문자열 grep
 - [ ] GitHub 본인 계정 exfil repo 검색
 - [ ] **Verdict 1줄**: Confirmed / At-risk / Clean
@@ -122,8 +124,8 @@ NIST SP 800-61 사이클을 1인 사업자 규모로 압축. 다이어그램: [`
 - [ ] **회전 필요 토큰만** 회전 — 캠페인 IoC와 무관한 토큰(Notion/Supabase/Gemini)은 보류
 - [ ] `pull_request_target` 워크플로 점검 (Mini Shai-Hulud 진입 벡터)
 - [ ] 사고 기간 git log에서 비정상 commit 확인
-- [ ] `~/Projects/solo-biz-playbook/` 1페이지 회고 — 무엇을 다르게 했어야 했나
-- [ ] `supply-chain-watchdog.py`에 새 IoC 추가 (아직 자동 fetch 안 되는 항목)
+- [ ] `<프로젝트 루트>/` 1페이지 회고 — 무엇을 다르게 했어야 했나
+- [ ] 자동 감시 IoC 리스트에 새 항목 추가 (아직 자동 fetch 안 되는 항목)
 
 ---
 
