@@ -79,7 +79,7 @@ automation/claude-worklog/
 | `session_metrics.py` | 세션 `.jsonl` → `{duration, msg_count, tool_counts, token_usage, git_changes, ...}` | `git` CLI |
 | `worklog_calendar.py` | 지표 → 캘린더 이벤트 body. `extendedProperties.private.claude_session_id` 로 idempotent upsert. 같은 프로젝트 30분 이내 이벤트는 머지. `WORKLOG_USE_GEMINI=1` 이면 Gemini로 제목 생성. | `gws` CLI, `GEMINI_API_KEY` (옵션) |
 | `write_worklog.py` | 그날 모든 세션 → Obsidian `업무일지/{date}.md` AUTO 섹션. Gemini로 narrative 요약. 수동 메모는 보존. | `GEMINI_API_KEY` (옵션), Obsidian vault 경로 |
-| `worklog_markers.py` | `<!-- AUTO:START --> ~ <!-- AUTO:END -->` 사이만 갈아끼우는 round-trip 유틸 | - |
+| `worklog_markers.py` | `<!-- AUTO:START --> ~ <!-- AUTO:END -->` 사이만 교체하는 round-trip 유틸 | - |
 
 ---
 
@@ -211,7 +211,7 @@ python3 scripts/worklog_calendar.py --backfill 30 --existing-only
 - **skip 기준**: `MIN_DURATION_SEC`, `MIN_MSG_FALLBACK` 상수 (기본: 5분 미만 + 메시지 3개 미만 + 커밋 0)
 - **머지 윈도**: `MERGE_GAP_SEC` 상수 (기본 30분)
 - **업무일지 narrative 프롬프트**: `write_worklog.py` 의 Gemini 호출부
-- **캘린더 대신 다른 도구에 넣기**: `worklog_calendar.py` 의 `_gws()` 함수만 Notion/ClickUp/TickTick API로 갈아끼우면 됩니다. 지표 추출은 `session_metrics.py` 가 이미 분리돼 있어요.
+- **캘린더 대신 다른 도구에 넣기**: `worklog_calendar.py` 의 `_gws()` 함수만 Notion/ClickUp/TickTick API로 교체하면 됩니다. 지표 추출은 `session_metrics.py` 가 이미 분리돼 있어요.
 
 ---
 
